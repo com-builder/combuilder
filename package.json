@@ -1,11 +1,62 @@
 {
   "name": "component-builder",
-  "version": "0.0.1",
-  "description": "`npm` CLI, built with `oclif`, utility for creating and managing Joomla components.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "A CLI utility for generating Joomla components",
+  "version": "0.0.0",
+  "author": "Jeremy Jackson @jeremyvii",
+  "bin": {
+    "component-builder": "./bin/run"
   },
-  "author": "",
-  "license": "ISC"
+  "bugs": "https://github.com/jeremyvii/component-builder/issues",
+  "dependencies": {
+    "@oclif/command": "^1.5.8",
+    "@oclif/config": "^1.12.0",
+    "@oclif/plugin-help": "^2.1.4",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.21.0",
+    "@oclif/test": "^1.2.2",
+    "@oclif/tslint": "^3.1.1",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.18",
+    "chai": "^4.2.0",
+    "globby": "^8.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/jeremyvii/component-builder",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "LGPL",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "component-builder",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "jeremyvii/component-builder",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "tslint -p test -t stylish",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
 }

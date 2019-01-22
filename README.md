@@ -1,31 +1,70 @@
-# Component Builder
+component-builder
+=================
 
-`npm` CLI, built with `oclif`, utility for creating and managing Joomla components.
+A CLI utility for generating Joomla components
 
-## Proposed functionality
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Version](https://img.shields.io/npm/v/component-builder.svg)](https://npmjs.org/package/component-builder)
+[![Downloads/week](https://img.shields.io/npm/dw/component-builder.svg)](https://npmjs.org/package/component-builder)
+[![License](https://img.shields.io/npm/l/component-builder.svg)](https://github.com/jeremyvii/component-builder/blob/master/package.json)
 
-* Folder for component template with placeholders for easily finding and replacing section names
-* Some sort of database or caching system for adding and modifying views
-* A convenient way to pass arguments, possibly an option to pass a JSON file for complex component creation
-* Eventually a way to generate modules, plugins, libraries, and packages as well
+<!-- toc -->
+* [Usage](#usage)
+* [Commands](#commands)
+<!-- tocstop -->
+# Usage
+<!-- usage -->
+```sh-session
+$ npm install -g component-builder
+$ component-builder COMMAND
+running command...
+$ component-builder (-v|--version|version)
+component-builder/0.0.0 linux-x64 node-v8.10.0
+$ component-builder --help [COMMAND]
+USAGE
+  $ component-builder COMMAND
+...
+```
+<!-- usagestop -->
+# Commands
+<!-- commands -->
+* [`component-builder hello [FILE]`](#component-builder-hello-file)
+* [`component-builder help [COMMAND]`](#component-builder-help-command)
 
-## Potential Libraries Needed
+## `component-builder hello [FILE]`
 
-[oclif](https://github.com/oclif/oclif)
+describe the command here
 
-## Potential Command Structure
+```
+USAGE
+  $ component-builder hello [FILE]
 
-### Component creation
-`component-builder create component-name`
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
 
-### Adding section
-`component-builder add sectionName column^1..column^n`
+EXAMPLE
+  $ component-builder hello
+  hello world from ./src/hello.ts!
+```
 
-### Adding column
-`component-builder add-column columnName -t type`
+_See code: [src/commands/hello.ts](https://github.com/jeremyvii/component-builder/blob/v0.0.0/src/commands/hello.ts)_
 
-### Removing section
-`component-builder remove sectionName`
+## `component-builder help [COMMAND]`
 
-### Removing column
-`component-builder remove-column columnName`
+display help for component-builder
+
+```
+USAGE
+  $ component-builder help [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.4/src/commands/help.ts)_
+<!-- commandsstop -->
