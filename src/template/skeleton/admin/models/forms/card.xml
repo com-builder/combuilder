@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+ ! This file represents the form structure for creating or updating a "Card".
+ !
+ ! @author     {{author}} <{{email}}>
+ ! @copyright  2018 {{author}}. All rights reserved.
+ ! @license    GNU General Public License v3 (GPL-3.0).
+ !-->
+<form>
+  <fieldset name='default'>
+    <field name='published' type='radio' class='btn-group btn-group-yesno radio' label='COM_ROLODEX_CARD_COL_PUBLISHED' description='COM_ROLODEX_CARD_COL_PUBLISHED_DESC' default='1' required='1'>
+      <option value='1'>JYES</option>
+      <option value='0'>JNO</option>
+    </field>
+    <field name='name' type='text' label='COM_ROLODEX_CARD_COL_NAME' description='COM_ROLODEX_CARD_COL_NAME_DESC' required='1'/>
+    <field name='phone' type='text' label='COM_ROLODEX_CARD_COL_PHONE' description='COM_ROLODEX_CARD_COL_PHONE_DESC' required='1'/>
+    <field name='id' type='hidden'/>
+  </fieldset>
+</form>

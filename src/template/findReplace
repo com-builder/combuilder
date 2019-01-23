@@ -1,0 +1,11 @@
+#!/bin/bash
+
+EDIT=""
+
+if [[ $3 == "true" ]]; then
+  EDIT="-i"
+fi
+
+cd skeleton
+
+find . -type f -exec grep -sR "$i" {} \; -exec sed $EDIT -e 's/$1/\{\{$2\}\}/g' {} \;
