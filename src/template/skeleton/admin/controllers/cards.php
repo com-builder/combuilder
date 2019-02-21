@@ -8,14 +8,14 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\Rolodex\Administrator\Controller;
+// namespace Joomla\Component\{{Name}}\Administrator\Controller;
 
 use Joomla\CMS\MVC\Controller\AdminController;
 
 /**
  * The "Cards" controller is responsible for facilitating Model and View logic.
  */
-class RolodexControllerCards extends AdminController {
+class {{Name}}ControllerCards extends AdminController {
   /**
    * Fetch the model used to fetch or manipulate a "Card".
    *

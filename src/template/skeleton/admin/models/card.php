@@ -8,7 +8,7 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\Rolodex\Administrator\Model;
+// namespace Joomla\Component\{{Name}}\Administrator\Model;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\AdminModel;
@@ -16,7 +16,7 @@ use Joomla\CMS\MVC\Model\AdminModel;
 /**
  * The "Card" model represents a single record from the database.
  */
-class RolodexModelCard extends AdminModel {
+class {{Name}}ModelCard extends AdminModel {
   /**
    * Fetch the form used to create or update a single "Card" record.
    *
@@ -40,7 +40,7 @@ class RolodexModelCard extends AdminModel {
    * This method is a default initializer for the parent class method with the
    * same name. If no value for `$name` is provided, it will be initialized to
    * "Cards". If no value for `$prefix` is provided, it will be initialized to
-   * "RolodexTable".
+   * "{{Name}}Table".
    *
    * @param   string                   $name    The name of the table class.
    * @param   string                   $prefix  The prefix of the table class.
@@ -55,7 +55,7 @@ class RolodexModelCard extends AdminModel {
    */
   public function getTable($name = '', $prefix = '', $config = []) {
     return parent::getTable($name ?: 'Cards',
-      $prefix ?: 'RolodexTable', $config);
+      $prefix ?: '{{Name}}Table', $config);
   }
 
   /**

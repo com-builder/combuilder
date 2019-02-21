@@ -8,14 +8,14 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\Rolodex\Site\Model;
+// namespace Joomla\Component\{{Name}}\Site\Model;
 
 use Joomla\CMS\MVC\Model\ListModel;
 
 /**
  * The "Cards" model is responsible for listing all records from the database.
  */
-class RolodexModelCards extends ListModel {
+class {{Name}}ModelCards extends ListModel {
   /**
    * Fetch a query to get a list of "Cards" from the database.
    *

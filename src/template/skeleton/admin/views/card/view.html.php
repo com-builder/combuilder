@@ -8,7 +8,7 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\Rolodex\Administrator\View\Card;
+// namespace Joomla\Component\{{Name}}\Administrator\View\Card;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Toolbar\ToolbarHelper as Toolbar;
@@ -17,7 +17,7 @@ use Joomla\CMS\MVC\View\HtmlView as BaseView;
 /**
  * The "Card" view is for a specific record from the database.
  */
-class RolodexViewCard extends BaseView {
+class {{Name}}ViewCard extends BaseView {
   /**
    * An object representing a "Card" record from the database.
    *

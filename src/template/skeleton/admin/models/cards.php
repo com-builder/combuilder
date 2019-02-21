@@ -8,14 +8,14 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\Rolodex\Administrator\Model;
+// namespace Joomla\Component\{{Name}}\Administrator\Model;
 
 use Joomla\CMS\MVC\Model\ListModel;
 
 /**
  * The "Cards" model is responsible for listing all records from the database.
  */
-class RolodexModelCards extends ListModel {
+class {{Name}}ModelCards extends ListModel {
   /**
    * Supplement the default constructor to configure the model's filter fields.
    *

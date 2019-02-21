@@ -8,7 +8,7 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\Rolodex\Site\Model;
+// namespace Joomla\Component\{{Name}}\Site\Model;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ItemModel;
@@ -16,7 +16,7 @@ use Joomla\CMS\MVC\Model\ItemModel;
 /**
  * The "Card" model represents a single record from the database.
  */
-class RolodexModelCard extends ItemModel {
+class {{Name}}ModelCard extends ItemModel {
   /**
    * Fetch a single "Card" from the database by ID.
    *

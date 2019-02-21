@@ -8,13 +8,13 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\Rolodex\Site\Controller;
+// namespace Joomla\Component\{{Name}}\Site\Controller;
 
 use Joomla\CMS\MVC\Controller\BaseController;
 
 /**
  * The "Cards" controller is responsible for facilitating Model and View logic.
  */
-class RolodexControllerCards extends BaseController {
+class {{Name}}ControllerCards extends BaseController {
 
 }

@@ -7,14 +7,14 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\Rolodex\Administrator\Table;
+// namespace Joomla\Component\{{Name}}\Administrator\Table;
 
 use Joomla\CMS\Table\Table;
 
 /**
  * This class represents the "Cards" table in the database.
  */
-class RolodexTableCards extends Table {
+class {{Name}}TableCards extends Table {
   /**
    * Supplement the default constructor to configure the database table.
    *

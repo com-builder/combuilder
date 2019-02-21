@@ -8,7 +8,7 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\Rolodex\Administrator\View\Cards;
+// namespace Joomla\Component\{{Name}}\Administrator\View\Cards;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\View\HtmlView as BaseView;
@@ -18,7 +18,7 @@ use Joomla\CMS\Uri\Uri as URI;
 /**
  * The "Cards" view is a list of "Card" records from the database.
  */
-class RolodexViewCards extends BaseView {
+class {{Name}}ViewCards extends BaseView {
   /**
    * An array of active search filters on the model from the user state.
    *

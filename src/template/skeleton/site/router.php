@@ -16,10 +16,10 @@ use Joomla\CMS\Menu\MenuItem;
  * This class is responsible for generating and processing SEF URLs in
  * accordance with Joomla! standards.
  *
- * @see  RolodexRouter::build()  To see how SEF URLs are generated.
- * @see  RolodexRouter::parse()  To see how SEF URLs are processed.
+ * @see  {{Name}}Router::build()  To see how SEF URLs are generated.
+ * @see  {{Name}}Router::parse()  To see how SEF URLs are processed.
  */
-class RolodexRouter extends RouterBase {
+class {{Name}}Router extends RouterBase {
   /**
    * A regular sub-expression that represents a valid PHP identifier name.
    *

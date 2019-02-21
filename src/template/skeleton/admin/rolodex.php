@@ -38,7 +38,7 @@ use Joomla\CMS\MVC\Controller\BaseController;
     $input->set('task', $input->get('view').'.display');
   }
   // Fetch an instance of the appropriate `BaseController` child class
-  $controller = BaseController::getInstance('Rolodex');
+  $controller = BaseController::getInstance('{{Name}}');
   // Execute the task using the controller instance
   $controller->execute($input->get('task'));
   // Perform any pending redirect set by the controller
