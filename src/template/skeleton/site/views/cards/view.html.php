@@ -38,7 +38,7 @@ class {{Name}}ViewCards extends BaseView {
    * The translated page title for the current view/layout.
    *
    * This property is equivalent to the unescaped, translated value of the
-   * language constant 'COM_ROLODEX_VIEW_CARDS_READ'.
+   * language constant 'COM_{{NAME}}_VIEW_CARDS_READ'.
    *
    * @var  string
    */
@@ -63,7 +63,7 @@ class {{Name}}ViewCards extends BaseView {
     $app = Factory::getApplication();
     $doc = Factory::getDocument();
     // Set the document title to the name of the current view/layout
-    $this->title = Text::_('COM_ROLODEX_VIEW_CARDS_READ');
+    $this->title = Text::_('COM_{{NAME}}_VIEW_CARDS_READ');
     $doc->setTitle($this->title.' - '.$app->get('sitename'));
     // Set the layout manually since we only have one layout
     $this->setLayout('read');

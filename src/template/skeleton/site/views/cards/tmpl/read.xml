@@ -7,8 +7,8 @@
  ! @license    GNU General Public License v3 (GPL-3.0).
  !-->
 <metadata>
-  <layout title='COM_ROLODEX_VIEW_CARDS_READ'>
-    <message><![CDATA[COM_ROLODEX_VIEW_CARDS_READ_DESC]]></message>
+  <layout title='COM_{{NAME}}_VIEW_CARDS_READ'>
+    <message><![CDATA[COM_{{NAME}}_VIEW_CARDS_READ_DESC]]></message>
   </layout>
   <fields name='request'>
     <fieldset name='request'>

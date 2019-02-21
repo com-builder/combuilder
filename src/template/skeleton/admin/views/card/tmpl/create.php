@@ -24,13 +24,13 @@ use Joomla\CMS\Language\Text;
   // Add a "Cancel" button to exit the new "Card" page
   Toolbar::cancel('card.cancel');
   // Set the title of the new "Card" page
-  Toolbar::title(Text::_('COM_ROLODEX_VIEW_CARD_CREATE'));
+  Toolbar::title(Text::_('COM_{{NAME}}_VIEW_CARD_CREATE'));
 })();
 ?>
 <form method='POST' name='adminForm' id='adminForm'>
   <fieldset class='adminform form-horizontal'>
     <legend>
-      <?= $this->escape(Text::_('COM_ROLODEX_VIEW_CARD_DETAILS')) ?>
+      <?= $this->escape(Text::_('COM_{{NAME}}_VIEW_CARD_DETAILS')) ?>
     </legend>
     <div class='row-fluid'>
       <div class='span6'>
