@@ -25,7 +25,7 @@ class {{Name}}ViewCards extends BaseView {
    *
    * @var  array
    */
-  protected $cards;
+  protected ${{item}}s;
 
   /**
    * A reference to the model's pagination object instance.
@@ -57,7 +57,7 @@ class {{Name}}ViewCards extends BaseView {
    */
   public function display($template = NULL) {
     // Fetch the "Cards" and pagination state from the database
-    $this->cards      = $this->get('Items');
+    $this->{{item}}s      = $this->get('Items');
     $this->pagination = $this->get('Pagination');
     // Fetch references to Joomla's application and document object instances
     $app = Factory::getApplication();
@@ -84,8 +84,8 @@ class {{Name}}ViewCards extends BaseView {
     return Route::_('index.php?'.URI::buildQuery([
       'id'     => intval($row->id),
       'option' => 'com_{{name}}',
-      'task'   => 'card.display',
-      'view'   => 'card'
+      'task'   => '{{item}}.display',
+      'view'   => '{{item}}'
     ]));
   }
 }

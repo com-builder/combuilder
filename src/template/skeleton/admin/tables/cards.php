@@ -25,6 +25,6 @@ class {{Name}}TableCards extends Table {
    *                                the table.
    */
   public function __construct(&$db) {
-    parent::__construct('#__{{name}}_cards', 'id', $db);
+    parent::__construct('#__{{name}}_{{item}}s', 'id', $db);
   }
 }

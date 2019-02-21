@@ -49,7 +49,7 @@ class {{Name}}ModelCard extends ItemModel {
       $query = $db->getQuery(TRUE);
       // Prepare the query to select the item from the "Cards" table by ID
       $query->select($db->quoteName(['name', 'phone']));
-      $query->from($db->quoteName('#__{{name}}_cards'));
+      $query->from($db->quoteName('#__{{name}}_{{item}}s'));
       $query->where($db->quoteName('id').' = '.$id.' AND '.
         $db->quoteName('published').' = 1');
       // Set the active query for the database driver

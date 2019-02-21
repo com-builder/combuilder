@@ -30,7 +30,7 @@ class {{Name}}ModelCard extends AdminModel {
    */
   public function getForm($data = [], $loadData = TRUE) {
     // Attempt to fetch a "Card" form instance defined by XML
-    return $this->loadForm('com_{{name}}.card', 'card',
+    return $this->loadForm('com_{{name}}.{{item}}', '{{item}}',
       ['control' => 'jform', 'load_data' => $loadData]) ?: FALSE;
   }
 
@@ -72,7 +72,7 @@ class {{Name}}ModelCard extends AdminModel {
    *                      on failure.
    */
   protected function loadFormData() {
-    $key = 'com_{{name}}.edit.card.data';
+    $key = 'com_{{name}}.edit.{{item}}.data';
     // Check the session for previously entered form data
     $data = Factory::getApplication()->getUserState($key);
     // If there is no user state for the form, fetch the "Card" being edited

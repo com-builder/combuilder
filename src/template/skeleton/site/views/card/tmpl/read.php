@@ -13,10 +13,10 @@ defined('_JEXEC') or exit;
 
 use Joomla\CMS\Language\Text;
 ?>
-<h1><?= $this->escape($this->card->name ?? '') ?></h1>
+<h1><?= $this->escape($this->{{item}}->name ?? '') ?></h1>
 <div>
   <span style='font-weight: bold'>
     <?= $this->escape(Text::_('COM_{{NAME}}_CARD_COL_PHONE')) ?>:
   </span>
-  <code><?= $this->escape($this->card->phone ?? '') ?></code>
+  <code><?= $this->escape($this->{{item}}->phone ?? '') ?></code>
 </div>

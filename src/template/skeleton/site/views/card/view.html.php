@@ -23,7 +23,7 @@ class {{Name}}ViewCard extends BaseView {
    *
    * @var  object
    */
-  protected $card;
+  protected ${{item}};
 
   /**
    * This method prepares the class instance to render a template layout.
@@ -38,17 +38,17 @@ class {{Name}}ViewCard extends BaseView {
    */
   public function display($template = NULL) {
     // Attempt to fetch the requested item from the database
-    $this->card = $this->get('Item');
+    $this->{{item}} = $this->get('Item');
     // Check if an invalid response was retrieved from the database
-    if (!isset($this->card)) {
-      // Throw an exception since the card doesn't exist (or is unpublished)
+    if (!isset($this->{{item}})) {
+      // Throw an exception since the {{item}} doesn't exist (or is unpublished)
       throw new \Exception(Text::_('COM_{{NAME}}_VIEW_CARD_404'), 404);
     }
     // Fetch references to Joomla's application and document object instances
     $app = Factory::getApplication();
     $doc = Factory::getDocument();
-    // Set the document title to the name of the card
-    $doc->setTitle($this->card->name.' - '.$app->get('sitename'));
+    // Set the document title to the name of the {{item}}
+    $doc->setTitle($this->{{item}}->name.' - '.$app->get('sitename'));
     // Set the layout manually since we only have one layout
     $this->setLayout('read');
     // Call the parent class implementation for this method

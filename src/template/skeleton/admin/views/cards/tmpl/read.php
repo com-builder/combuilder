@@ -32,20 +32,20 @@ $listDir   = $this->escape($this->filterOrderDir);
   $deleteMsg = Text::_('COM_{{NAME}}_VIEW_CARDS_DELETE_CONFIRM');
   $title     = Text::_('COM_{{NAME}}_VIEW_CARDS_READ');
   // Add a "New" button to create a new "Card"
-  Toolbar::addNew('card.add');
+  Toolbar::addNew('{{item}}.add');
   // Add a "Publish" button to publish one or more "Card"
-  Toolbar::publishList('cards.publish');
+  Toolbar::publishList('{{item}}s.publish');
   // Add an "Unpublish" button to unpublish one or more "Card"
-  Toolbar::unpublishList('cards.unpublish');
+  Toolbar::unpublishList('{{item}}s.unpublish');
   // Add an "Check-in" button to unpublish one or more "Card"
-  Toolbar::checkin('cards.checkin');
+  Toolbar::checkin('{{item}}s.checkin');
   // Determine whether the trash or delete button should be shown
   if (intval($view->activeFilters['published'] ?? '') !== -2) {
     // Add a "Trash" button to move one or more "Card" to the trash
-    Toolbar::trash('cards.trash');
+    Toolbar::trash('{{item}}s.trash');
   } else {
     // Add a "Delete" button to delete one or more "Card"
-    Toolbar::deleteList($deleteMsg, 'cards.delete');
+    Toolbar::deleteList($deleteMsg, '{{item}}s.delete');
   }
   // Set the title of the page
   Toolbar::title($title);
@@ -56,7 +56,7 @@ $listDir   = $this->escape($this->filterOrderDir);
   <div class="row-fluid">
     <?= Layout::render('joomla.searchtools.default', ['view' => $this]) ?>
   </div>
-  <?php if (count($this->cards) > 0) { ?>
+  <?php if (count($this->{{item}}s) > 0) { ?>
     <table class='table table-striped table-hover'>
       <thead>
         <tr>
@@ -68,17 +68,17 @@ $listDir   = $this->escape($this->filterOrderDir);
           </th>
           <th>
             <?= HTML::_('grid.sort', 'COM_{{NAME}}_CARD_COL_NAME',
-              'cards.name', $listDir, $listOrder) ?>
+              '{{item}}s.name', $listDir, $listOrder) ?>
           </th>
           <th width='16%' style='text-align: right;'>
             <?= HTML::_('grid.sort', 'COM_{{NAME}}_CARD_COL_ID',
-              'cards.id', $listDir, $listOrder) ?>
+              '{{item}}s.id', $listDir, $listOrder) ?>
           </th>
         </tr>
       </thead>
       <tbody>
         <?php $userID = intval(Factory::getUser()->id); ?>
-        <?php foreach ($this->cards as $i => $row) { ?>
+        <?php foreach ($this->{{item}}s as $i => $row) { ?>
           <?php $row->checkedOut = intval($row->checkedOut); ?>
           <tr>
             <td>
@@ -86,12 +86,12 @@ $listDir   = $this->escape($this->filterOrderDir);
             </td>
             <td style='text-align: right;'>
               <?= HTML::_('jgrid.published', $row->published, $i,
-                          'cards.', TRUE, 'cb') ?>
+                          '{{item}}s.', TRUE, 'cb') ?>
             </td>
             <td>
               <?php if ($row->checkedOut > 0) { ?>
                 <?= HTML::_('jgrid.checkedout', $i, $row->editor,
-                            $row->checkedOutTime, 'cards.',
+                            $row->checkedOutTime, '{{item}}s.',
                             $userID === $row->checkedOut) ?>
               <?php } ?>
               <a href="<?= $this->getCardUpdateLink($row) ?>">
@@ -120,8 +120,8 @@ $listDir   = $this->escape($this->filterOrderDir);
     </div>
   <?php } ?>
   <input type='hidden' name='boxchecked' value='0'/>
-  <input type='hidden' name='task' value='cards.display'/>
-  <input type='hidden' name='view' value='cards'/>
+  <input type='hidden' name='task' value='{{item}}s.display'/>
+  <input type='hidden' name='view' value='{{item}}s'/>
   <input type='hidden' name='filter_order' value='<?= $listOrder ?>'/>
   <input type='hidden' name='filter_order_Dir' value='<?= $listDirn ?>'/>
   <?= HTML::_('form.token') ?>

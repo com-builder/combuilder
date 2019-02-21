@@ -23,7 +23,7 @@ class {{Name}}ViewCard extends BaseView {
    *
    * @var  object
    */
-  protected $card;
+  protected ${{item}};
 
   /**
    * The form used to create or update a "Card" record.
@@ -39,9 +39,9 @@ class {{Name}}ViewCard extends BaseView {
    */
   protected function addToolbarSaveButtons() {
     // Add the applicable save buttons to the toolbar
-    Toolbar::apply('card.apply');
-    Toolbar::save('card.save');
-    Toolbar::save2new('card.save2new');
+    Toolbar::apply('{{item}}.apply');
+    Toolbar::save('{{item}}.save');
+    Toolbar::save2new('{{item}}.save2new');
   }
 
   /**
@@ -60,13 +60,13 @@ class {{Name}}ViewCard extends BaseView {
   public function display($template = NULL) {
     // Fetch the requested "Card" by the provided ID
     $this->form = $this->get('Form');
-    $this->card = $this->get('Item');
+    $this->{{item}} = $this->get('Item');
     // Add the save buttons to the toolbar
     $this->addToolbarSaveButtons();
     // Hide the administrative menu while processing the form
     Factory::getApplication()->input->set('hidemainmenu', TRUE);
     // Determine whether to show the new or edit view
-    $this->setLayout(!isset($this->card->id) ? 'create' : 'update');
+    $this->setLayout(!isset($this->{{item}}->id) ? 'create' : 'update');
     // Call the parent class implementation for this method
     return parent::display($template);
   }

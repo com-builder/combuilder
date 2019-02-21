@@ -23,9 +23,9 @@ use Joomla\CMS\Language\Text;
  */
 (function() {
   // Add a "Save to Copy" button to facilitate easy duplication
-  Toolbar::save2copy('card.save2copy');
+  Toolbar::save2copy('{{item}}.save2copy');
   // Add a "Cancel" button to exit the edit page
-  Toolbar::cancel('card.cancel', 'JTOOLBAR_CLOSE');
+  Toolbar::cancel('{{item}}.cancel', 'JTOOLBAR_CLOSE');
   // Set the title of the edit page
   Toolbar::title(Text::_('COM_{{NAME}}_VIEW_CARD_UPDATE'));
 })();
@@ -41,8 +41,8 @@ use Joomla\CMS\Language\Text;
       </div>
     </div>
   </fieldset>
-  <input type='hidden' name='id' value='<?= $this->escape($this->card->id) ?>'/>
-  <input type='hidden' name='task' value='cards.display'/>
-  <input type='hidden' name='view' value='cards'/>
+  <input type='hidden' name='id' value='<?= $this->escape($this->{{item}}->id) ?>'/>
+  <input type='hidden' name='task' value='{{item}}s.display'/>
+  <input type='hidden' name='view' value='{{item}}s'/>
   <?= HTML::_('form.token') ?>
 </form>

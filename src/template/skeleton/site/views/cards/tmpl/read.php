@@ -14,7 +14,7 @@ defined('_JEXEC') or exit;
 use Joomla\CMS\Language\Text;
 ?>
 <form method='POST' id='adminForm' name='adminForm'>
-  <?php if (count($this->cards) > 0) { ?>
+  <?php if (count($this->{{item}}s) > 0) { ?>
     <table class='table table-striped table-hover'>
       <thead>
         <tr>
@@ -24,7 +24,7 @@ use Joomla\CMS\Language\Text;
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($this->cards as $i => $row) { ?>
+        <?php foreach ($this->{{item}}s as $i => $row) { ?>
           <tr>
             <td>
               <a href="<?= $this->getCardViewLink($row) ?>">

@@ -12,7 +12,7 @@
   </layout>
   <fields name='request'>
     <fieldset name='request'>
-      <field name='task' type='hidden' default='cards.display'/>
+      <field name='task' type='hidden' default='{{item}}s.display'/>
     </fieldset>
   </fields>
 </metadata>

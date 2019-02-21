@@ -29,7 +29,7 @@ use Joomla\CMS\MVC\Controller\BaseController;
   if ($input->get('view', FALSE) === FALSE) {
     // Supply a default view to absolve this extension of requiring a generic
     // controller class
-    $input->set('view', 'cards');
+    $input->set('view', '{{item}}s');
   }
   // Check whether a task was supplied in the application input parameters
   if ($input->get('task', FALSE) === FALSE) {

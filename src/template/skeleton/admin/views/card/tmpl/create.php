@@ -22,7 +22,7 @@ use Joomla\CMS\Language\Text;
  */
 (function() {
   // Add a "Cancel" button to exit the new "Card" page
-  Toolbar::cancel('card.cancel');
+  Toolbar::cancel('{{item}}.cancel');
   // Set the title of the new "Card" page
   Toolbar::title(Text::_('COM_{{NAME}}_VIEW_CARD_CREATE'));
 })();
@@ -38,7 +38,7 @@ use Joomla\CMS\Language\Text;
       </div>
     </div>
   </fieldset>
-  <input type='hidden' name='task' value='cards.display'/>
-  <input type='hidden' name='view' value='cards'/>
+  <input type='hidden' name='task' value='{{item}}s.display'/>
+  <input type='hidden' name='view' value='{{item}}s'/>
   <?= HTML::_('form.token') ?>
 </form>

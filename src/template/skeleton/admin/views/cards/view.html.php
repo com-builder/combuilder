@@ -38,7 +38,7 @@ class {{Name}}ViewCards extends BaseView {
    *
    * @var  array
    */
-  protected $cards;
+  protected ${{item}}s;
 
   /**
    * The form used to filter the "Cards" result set.
@@ -83,14 +83,14 @@ class {{Name}}ViewCards extends BaseView {
     // Fetch the application object instance
     $this->app = Factory::getApplication();
     // Fetch the "Cards" and pagination state from the database
-    $this->cards      = $this->get('Items');
+    $this->{{item}}s      = $this->get('Items');
     $this->pagination = $this->get('Pagination');
     // Fetch the sorting column and direction from the user state
     $this->filterOrder    = $this->app->getUserStateFromRequest(
-      '{{name}}.list.admin.card.filterOrder',
-      'filter_order', 'cards.id', 'cmd');
+      '{{name}}.list.admin.{{item}}.filterOrder',
+      'filter_order', '{{item}}s.id', 'cmd');
     $this->filterOrderDir = $this->app->getUserStateFromRequest(
-      '{{name}}.list.admin.card.filterOrderDir',
+      '{{name}}.list.admin.{{item}}.filterOrderDir',
       'filter_order_Dir', 'asc', 'cmd');
     $this->filterForm     = $this->get('FilterForm');
     $this->activeFilters  = $this->get('ActiveFilters');
@@ -113,7 +113,7 @@ class {{Name}}ViewCards extends BaseView {
     return Route::_('index.php?'.URI::buildQuery([
       'id'     => intval($row->id),
       'option' => 'com_{{name}}',
-      'task'   => 'card.edit'
+      'task'   => '{{item}}.edit'
     ]));
   }
 }
