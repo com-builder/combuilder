@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!--
- ! This file defines a menu item type to view a single "Card".
+ ! This file defines a menu item type to view a single "{{Item}}".
  !
  ! @author     {{author}} <{{email}}>
  ! @copyright  2018 {{author}}. All rights reserved.

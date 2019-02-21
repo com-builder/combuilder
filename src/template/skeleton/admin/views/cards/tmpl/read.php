@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 /**
  * This file contains the layout and supporting logic for the component's
- * "Cards" view and is used exclusively by the `ViewCards` class.
+ * "{{Item}}s" view and is used exclusively by the `View{{Item}}s` class.
  *
  * @author     {{author}} <{{email}}>
  * @copyright  2018 {{author}}. All rights reserved.
@@ -31,20 +31,20 @@ $listDir   = $this->escape($this->filterOrderDir);
   // Fetch applicable language translations for the toolbar configuration
   $deleteMsg = Text::_('COM_{{NAME}}_VIEW_CARDS_DELETE_CONFIRM');
   $title     = Text::_('COM_{{NAME}}_VIEW_CARDS_READ');
-  // Add a "New" button to create a new "Card"
+  // Add a "New" button to create a new "{{Item}}"
   Toolbar::addNew('{{item}}.add');
-  // Add a "Publish" button to publish one or more "Card"
+  // Add a "Publish" button to publish one or more "{{Item}}"
   Toolbar::publishList('{{item}}s.publish');
-  // Add an "Unpublish" button to unpublish one or more "Card"
+  // Add an "Unpublish" button to unpublish one or more "{{Item}}"
   Toolbar::unpublishList('{{item}}s.unpublish');
-  // Add an "Check-in" button to unpublish one or more "Card"
+  // Add an "Check-in" button to unpublish one or more "{{Item}}"
   Toolbar::checkin('{{item}}s.checkin');
   // Determine whether the trash or delete button should be shown
   if (intval($view->activeFilters['published'] ?? '') !== -2) {
-    // Add a "Trash" button to move one or more "Card" to the trash
+    // Add a "Trash" button to move one or more "{{Item}}" to the trash
     Toolbar::trash('{{item}}s.trash');
   } else {
-    // Add a "Delete" button to delete one or more "Card"
+    // Add a "Delete" button to delete one or more "{{Item}}"
     Toolbar::deleteList($deleteMsg, '{{item}}s.delete');
   }
   // Set the title of the page
@@ -94,7 +94,7 @@ $listDir   = $this->escape($this->filterOrderDir);
                             $row->checkedOutTime, '{{item}}s.',
                             $userID === $row->checkedOut) ?>
               <?php } ?>
-              <a href="<?= $this->getCardUpdateLink($row) ?>">
+              <a href="<?= $this->get{{Item}}UpdateLink($row) ?>">
                 <?= $this->escape($row->name) ?>
               </a>
             </td>

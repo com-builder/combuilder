@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 /**
- * This file represents the "Card" data layer and is responsible for handling
+ * This file represents the "{{Item}}" data layer and is responsible for handling
  * all data-oriented operations.
  *
  * @author     {{author}} <{{email}}>
@@ -14,11 +14,11 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\AdminModel;
 
 /**
- * The "Card" model represents a single record from the database.
+ * The "{{Item}}" model represents a single record from the database.
  */
-class {{Name}}ModelCard extends AdminModel {
+class {{Name}}Model{{Item}} extends AdminModel {
   /**
-   * Fetch the form used to create or update a single "Card" record.
+   * Fetch the form used to create or update a single "{{Item}}" record.
    *
    * @suppress  PhanUnusedPublicMethodParameter
    *
@@ -29,17 +29,17 @@ class {{Name}}ModelCard extends AdminModel {
    *                            `FALSE` on failure.
    */
   public function getForm($data = [], $loadData = TRUE) {
-    // Attempt to fetch a "Card" form instance defined by XML
+    // Attempt to fetch a "{{Item}}" form instance defined by XML
     return $this->loadForm('com_{{name}}.{{item}}', '{{item}}',
       ['control' => 'jform', 'load_data' => $loadData]) ?: FALSE;
   }
 
   /**
-   * Fetch the table used to fetch or manipulate "Cards".
+   * Fetch the table used to fetch or manipulate "{{Item}}s".
    *
    * This method is a default initializer for the parent class method with the
    * same name. If no value for `$name` is provided, it will be initialized to
-   * "Cards". If no value for `$prefix` is provided, it will be initialized to
+   * "{{Item}}s". If no value for `$prefix` is provided, it will be initialized to
    * "{{Name}}Table".
    *
    * @param   string                   $name    The name of the table class.
@@ -51,10 +51,10 @@ class {{Name}}ModelCard extends AdminModel {
    *                                            instance couldn't be created.
    *
    * @return  \Joomla\CMS\Table\Table           A `Table` instance representing
-   *                                            the "Cards" table.
+   *                                            the "{{Item}}s" table.
    */
   public function getTable($name = '', $prefix = '', $config = []) {
-    return parent::getTable($name ?: 'Cards',
+    return parent::getTable($name ?: '{{Item}}s',
       $prefix ?: '{{Name}}Table', $config);
   }
 
@@ -68,14 +68,14 @@ class {{Name}}ModelCard extends AdminModel {
    *
    * @throws  \Exception  When the application fails to start.
    *
-   * @return  mixed       An `object` representing a "Card" or `FALSE`
+   * @return  mixed       An `object` representing a "{{Item}}" or `FALSE`
    *                      on failure.
    */
   protected function loadFormData() {
     $key = 'com_{{name}}.edit.{{item}}.data';
     // Check the session for previously entered form data
     $data = Factory::getApplication()->getUserState($key);
-    // If there is no user state for the form, fetch the "Card" being edited
+    // If there is no user state for the form, fetch the "{{Item}}" being edited
     return isset($data) ? $data : $this->getItem();
   }
 }

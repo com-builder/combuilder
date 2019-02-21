@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 /**
- * This controller is responsible for coordinating the "Cards" data and
+ * This controller is responsible for coordinating the "{{Item}}s" data and
  * presentation layers.
  *
  * @author     {{author}} <{{email}}>
@@ -13,15 +13,15 @@
 use Joomla\CMS\MVC\Controller\AdminController;
 
 /**
- * The "Cards" controller is responsible for facilitating Model and View logic.
+ * The "{{Item}}s" controller is responsible for facilitating Model and View logic.
  */
-class {{Name}}ControllerCards extends AdminController {
+class {{Name}}Controller{{Item}}s extends AdminController {
   /**
-   * Fetch the model used to fetch or manipulate a "Card".
+   * Fetch the model used to fetch or manipulate a "{{Item}}".
    *
    * This method is a default initializer for the parent class method with the
    * same name. If no value for `$name` is provided, it will be initialized to
-   * "Card".
+   * "{{Item}}".
    *
    * The "ignore_request" configuration key is overriden to be `FALSE`.
    *
@@ -35,6 +35,6 @@ class {{Name}}ControllerCards extends AdminController {
    */
   public function getModel($name = '', $prefix = '', $config = []) {
     $config['ignore_request'] = FALSE;
-    return parent::getModel($name ?: 'Card', $prefix, $config);
+    return parent::getModel($name ?: '{{Item}}', $prefix, $config);
   }
 }

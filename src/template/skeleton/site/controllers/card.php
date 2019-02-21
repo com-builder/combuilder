@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 /**
- * This controller is responsible for coordinating the "Card" data and
+ * This controller is responsible for coordinating the "{{Item}}" data and
  * presentation layers.
  *
  * @author     {{author}} <{{email}}>
@@ -13,8 +13,8 @@
 use Joomla\CMS\MVC\Controller\BaseController;
 
 /**
- * The "Card" controller is responsible for facilitating Model and View logic.
+ * The "{{Item}}" controller is responsible for facilitating Model and View logic.
  */
-class {{Name}}ControllerCard extends BaseController {
+class {{Name}}Controller{{Item}} extends BaseController {
 
 }

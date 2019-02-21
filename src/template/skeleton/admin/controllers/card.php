@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 /**
- * This controller is responsible for coordinating the "Card" data and
+ * This controller is responsible for coordinating the "{{Item}}" data and
  * presentation layers.
  *
  * @author     {{author}} <{{email}}>
@@ -13,11 +13,11 @@
 use Joomla\CMS\MVC\Controller\FormController;
 
 /**
- * The "Card" controller is responsible for facilitating Model and View logic.
+ * The "{{Item}}" controller is responsible for facilitating Model and View logic.
  */
-class {{Name}}ControllerCard extends FormController {
+class {{Name}}Controller{{Item}} extends FormController {
   /**
-   * Fetch the model used to fetch or manipulate a "Card".
+   * Fetch the model used to fetch or manipulate a "{{Item}}".
    *
    * The "ignore_request" configuration key is overriden to be `FALSE`.
    *

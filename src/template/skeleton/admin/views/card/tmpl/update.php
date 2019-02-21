@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 /**
  * This file contains the layout and supporting logic for the component's
- * "Card" view and is used exclusively by the `ViewCard` class.
+ * "{{Item}}" view and is used exclusively by the `View{{Item}}` class.
  *
  * @author     {{author}} <{{email}}>
  * @copyright  2018 {{author}}. All rights reserved.

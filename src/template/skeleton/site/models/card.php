@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 /**
- * This file represents the "Card" data layer and is responsible for handling
+ * This file represents the "{{Item}}" data layer and is responsible for handling
  * all data-oriented operations.
  *
  * @author     {{author}} <{{email}}>
@@ -14,18 +14,18 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ItemModel;
 
 /**
- * The "Card" model represents a single record from the database.
+ * The "{{Item}}" model represents a single record from the database.
  */
-class {{Name}}ModelCard extends ItemModel {
+class {{Name}}Model{{Item}} extends ItemModel {
   /**
-   * Fetch a single "Card" from the database by ID.
+   * Fetch a single "{{Item}}" from the database by ID.
    *
    * If an ID is not provided as an argument, this method will attempt to
    * extract an item ID from the application input.
    *
    * Only the `name` and `phone` columns are included in the result.
    *
-   * @param   ?int               $id  A "Card" identification number.
+   * @param   ?int               $id  A "{{Item}}" identification number.
    *
    * @throws  \Exception              When the application fails to start.
    * @throws  \RuntimeException       If the current database driver's query
@@ -47,7 +47,7 @@ class {{Name}}ModelCard extends ItemModel {
       $db = $this->getDBO();
       // Fetch a reference to a new query object instance
       $query = $db->getQuery(TRUE);
-      // Prepare the query to select the item from the "Cards" table by ID
+      // Prepare the query to select the item from the "{{Item}}s" table by ID
       $query->select($db->quoteName(['name', 'phone']));
       $query->from($db->quoteName('#__{{name}}_{{item}}s'));
       $query->where($db->quoteName('id').' = '.$id.' AND '.

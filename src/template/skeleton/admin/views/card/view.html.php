@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 /**
- * This file represents the "Card" presentation layer and is responsible for
+ * This file represents the "{{Item}}" presentation layer and is responsible for
  * handling the display of and interaction with data.
  *
  * @author     {{author}} <{{email}}>
@@ -8,25 +8,25 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\{{Name}}\Administrator\View\Card;
+// namespace Joomla\Component\{{Name}}\Administrator\View\{{Item}};
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Toolbar\ToolbarHelper as Toolbar;
 use Joomla\CMS\MVC\View\HtmlView as BaseView;
 
 /**
- * The "Card" view is for a specific record from the database.
+ * The "{{Item}}" view is for a specific record from the database.
  */
-class {{Name}}ViewCard extends BaseView {
+class {{Name}}View{{Item}} extends BaseView {
   /**
-   * An object representing a "Card" record from the database.
+   * An object representing a "{{Item}}" record from the database.
    *
    * @var  object
    */
   protected ${{item}};
 
   /**
-   * The form used to create or update a "Card" record.
+   * The form used to create or update a "{{Item}}" record.
    *
    * @var  \Joomla\CMS\Form\Form
    */
@@ -58,7 +58,7 @@ class {{Name}}ViewCard extends BaseView {
    *                                 on failure.
    */
   public function display($template = NULL) {
-    // Fetch the requested "Card" by the provided ID
+    // Fetch the requested "{{Item}}" by the provided ID
     $this->form = $this->get('Form');
     $this->{{item}} = $this->get('Item');
     // Add the save buttons to the toolbar

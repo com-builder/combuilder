@@ -1,5 +1,5 @@
 ---
--- This file defines the schema required to store "Card" records in a database.
+-- This file defines the schema required to store "{{Item}}" records in a database.
 --
 -- @author     {{author}} <{{email}}>
 -- @copyright  2018 {{author}}. All rights reserved.

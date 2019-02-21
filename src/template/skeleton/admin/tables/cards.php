@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 /**
- * This file represents the "Cards" table instance.
+ * This file represents the "{{Item}}s" table instance.
  *
  * @author     {{author}} <{{email}}>
  * @copyright  2018 {{author}}. All rights reserved.
@@ -12,9 +12,9 @@
 use Joomla\CMS\Table\Table;
 
 /**
- * This class represents the "Cards" table in the database.
+ * This class represents the "{{Item}}s" table in the database.
  */
-class {{Name}}TableCards extends Table {
+class {{Name}}Table{{Item}}s extends Table {
   /**
    * Supplement the default constructor to configure the database table.
    *

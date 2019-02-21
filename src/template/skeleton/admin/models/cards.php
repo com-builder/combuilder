@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 /**
- * This file represents the "Cards" data layer and is responsible for handling
+ * This file represents the "{{Item}}s" data layer and is responsible for handling
  * all data-oriented operations.
  *
  * @author     {{author}} <{{email}}>
@@ -13,9 +13,9 @@
 use Joomla\CMS\MVC\Model\ListModel;
 
 /**
- * The "Cards" model is responsible for listing all records from the database.
+ * The "{{Item}}s" model is responsible for listing all records from the database.
  */
-class {{Name}}ModelCards extends ListModel {
+class {{Name}}Model{{Item}}s extends ListModel {
   /**
    * Supplement the default constructor to configure the model's filter fields.
    *
@@ -27,7 +27,7 @@ class {{Name}}ModelCards extends ListModel {
   }
 
   /**
-   * Fetch a query to get a list of "Cards" from the database.
+   * Fetch a query to get a list of "{{Item}}s" from the database.
    *
    * The query will be pre-configured to contain only the `id`, `published` and
    * `name` columns. Additionally, if the `checked_out` column is non-NULL, then
@@ -59,7 +59,7 @@ class {{Name}}ModelCards extends ListModel {
    *                       is ordered ascending.
    *
    * The user state key `list.ordering` must contain the prefix '{{item}}s.' before
-   * the provided column name so that there is no ambiguity between the "Cards"
+   * the provided column name so that there is no ambiguity between the "{{Item}}s"
    * and the "Users" table. This is because these two tables are joined to fetch
    * the name of the "User" represented by the ID stored in `{{item}}s.checked_out`.
    *
@@ -75,7 +75,7 @@ class {{Name}}ModelCards extends ListModel {
     $db = $this->getDBO();
     // Fetch a reference to a new query object instance
     $query = $db->getQuery(TRUE);
-    // Prepare the query to select list-worthy columns from the "Cards" table
+    // Prepare the query to select list-worthy columns from the "{{Item}}s" table
     $query->select($db->quoteName(['{{item}}s.id',
       '{{item}}s.published', '{{item}}s.name']));
     // Fetch the checked out user ID and timestamp

@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 /**
- * This file represents the "Cards" data layer and is responsible for handling
+ * This file represents the "{{Item}}s" data layer and is responsible for handling
  * all data-oriented operations.
  *
  * @author     {{author}} <{{email}}>
@@ -13,11 +13,11 @@
 use Joomla\CMS\MVC\Model\ListModel;
 
 /**
- * The "Cards" model is responsible for listing all records from the database.
+ * The "{{Item}}s" model is responsible for listing all records from the database.
  */
-class {{Name}}ModelCards extends ListModel {
+class {{Name}}Model{{Item}}s extends ListModel {
   /**
-   * Fetch a query to get a list of "Cards" from the database.
+   * Fetch a query to get a list of "{{Item}}s" from the database.
    *
    * The query will be pre-configured to contain only the `id` and `name`
    * columns for published records.
@@ -34,7 +34,7 @@ class {{Name}}ModelCards extends ListModel {
     $db = $this->getDBO();
     // Fetch a reference to a new query object instance
     $query = $db->getQuery(TRUE);
-    // Prepare the query to select list-worthy columns from the "Cards" table
+    // Prepare the query to select list-worthy columns from the "{{Item}}s" table
     $query->select($db->quoteName(['id', 'name']));
     $query->from($db->quoteName('#__{{name}}_{{item}}s'));
     $query->where($db->quoteName('published').' = 1');

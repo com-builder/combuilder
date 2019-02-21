@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 /**
- * This file represents the "Card" presentation layer and is responsible for
+ * This file represents the "{{Item}}" presentation layer and is responsible for
  * handling the display of and interaction with data.
  *
  * @author     {{author}} <{{email}}>
@@ -8,18 +8,18 @@
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 
-// namespace Joomla\Component\{{Name}}\Site\View\Card;
+// namespace Joomla\Component\{{Name}}\Site\View\{{Item}};
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseView;
 
 /**
- * The "Card" view is for a specific record from the database.
+ * The "{{Item}}" view is for a specific record from the database.
  */
-class {{Name}}ViewCard extends BaseView {
+class {{Name}}View{{Item}} extends BaseView {
   /**
-   * An object representing a "Card" record from the database.
+   * An object representing a "{{Item}}" record from the database.
    *
    * @var  object
    */

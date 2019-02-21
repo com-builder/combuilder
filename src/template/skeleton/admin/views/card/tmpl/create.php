@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 /**
  * This file contains the layout and supporting logic for the component's
- * "Card" view and is used exclusively by the `ViewCard` class.
+ * "{{Item}}" view and is used exclusively by the `View{{Item}}` class.
  *
  * @author     {{author}} <{{email}}>
  * @copyright  2018 {{author}}. All rights reserved.
@@ -21,9 +21,9 @@ use Joomla\CMS\Language\Text;
  * This function adds a "Cancel" button to the toolbar and sets the page title.
  */
 (function() {
-  // Add a "Cancel" button to exit the new "Card" page
+  // Add a "Cancel" button to exit the new "{{Item}}" page
   Toolbar::cancel('{{item}}.cancel');
-  // Set the title of the new "Card" page
+  // Set the title of the new "{{Item}}" page
   Toolbar::title(Text::_('COM_{{NAME}}_VIEW_CARD_CREATE'));
 })();
 ?>
