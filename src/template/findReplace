@@ -8,4 +8,4 @@ fi
 
 cd ./skeleton
 
-find . -type f -exec grep -sR "$1" {} \; -exec sed $EDIT -e 's/$1/\{\{$2\}\}/g' {} \;
+grep -rl "$1" ./ | xargs sed  $EDIT 's/$1/\{\{$2\}\}/g'

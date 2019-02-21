@@ -5,7 +5,7 @@
 -- @copyright  2018 {{author}}. All rights reserved.
 -- @license    GNU General Public License v3 (GPL-3.0).
 ---
-CREATE TABLE IF NOT EXISTS `#__rolodex_cards` (
+CREATE TABLE IF NOT EXISTS `#__{{name}}_cards` (
   `id`               INT(11)          NOT NULL AUTO_INCREMENT,
   `published`        TINYINT(4)       NOT NULL DEFAULT 1,
   `checked_out`      INT(11) UNSIGNED NOT NULL DEFAULT 0,

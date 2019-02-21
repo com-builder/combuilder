@@ -49,7 +49,7 @@ class RolodexModelCard extends ItemModel {
       $query = $db->getQuery(TRUE);
       // Prepare the query to select the item from the "Cards" table by ID
       $query->select($db->quoteName(['name', 'phone']));
-      $query->from($db->quoteName('#__rolodex_cards'));
+      $query->from($db->quoteName('#__{{name}}_cards'));
       $query->where($db->quoteName('id').' = '.$id.' AND '.
         $db->quoteName('published').' = 1');
       // Set the active query for the database driver

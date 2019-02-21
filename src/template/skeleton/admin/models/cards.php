@@ -86,7 +86,7 @@ class RolodexModelCards extends ListModel {
     // Left join the users table when checked out
     $query->join('LEFT', $db->quoteName('#__users', 'users').' ON '.
       'cards.checked_out = users.id');
-    $query->from($db->quoteName('#__rolodex_cards', 'cards'));
+    $query->from($db->quoteName('#__{{name}}_cards', 'cards'));
     // Fetch the search filter from the user state
     $search = $this->getState('filter.search');
     // Check whether the search filter is non-empty

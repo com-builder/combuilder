@@ -83,7 +83,7 @@ class RolodexViewCards extends BaseView {
   protected function getCardViewLink(object $row): string {
     return Route::_('index.php?'.URI::buildQuery([
       'id'     => intval($row->id),
-      'option' => 'com_rolodex',
+      'option' => 'com_{{name}}',
       'task'   => 'card.display',
       'view'   => 'card'
     ]));

@@ -25,6 +25,6 @@ class RolodexTableCards extends Table {
    *                                the table.
    */
   public function __construct(&$db) {
-    parent::__construct('#__rolodex_cards', 'id', $db);
+    parent::__construct('#__{{name}}_cards', 'id', $db);
   }
 }

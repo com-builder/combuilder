@@ -36,7 +36,7 @@ class RolodexModelCards extends ListModel {
     $query = $db->getQuery(TRUE);
     // Prepare the query to select list-worthy columns from the "Cards" table
     $query->select($db->quoteName(['id', 'name']));
-    $query->from($db->quoteName('#__rolodex_cards'));
+    $query->from($db->quoteName('#__{{name}}_cards'));
     $query->where($db->quoteName('published').' = 1');
     return $query;
   }

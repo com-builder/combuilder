@@ -87,10 +87,10 @@ class RolodexViewCards extends BaseView {
     $this->pagination = $this->get('Pagination');
     // Fetch the sorting column and direction from the user state
     $this->filterOrder    = $this->app->getUserStateFromRequest(
-      'rolodex.list.admin.card.filterOrder',
+      '{{name}}.list.admin.card.filterOrder',
       'filter_order', 'cards.id', 'cmd');
     $this->filterOrderDir = $this->app->getUserStateFromRequest(
-      'rolodex.list.admin.card.filterOrderDir',
+      '{{name}}.list.admin.card.filterOrderDir',
       'filter_order_Dir', 'asc', 'cmd');
     $this->filterForm     = $this->get('FilterForm');
     $this->activeFilters  = $this->get('ActiveFilters');
@@ -112,7 +112,7 @@ class RolodexViewCards extends BaseView {
   protected function getCardUpdateLink(object $row): string {
     return Route::_('index.php?'.URI::buildQuery([
       'id'     => intval($row->id),
-      'option' => 'com_rolodex',
+      'option' => 'com_{{name}}',
       'task'   => 'card.edit'
     ]));
   }
