@@ -24,13 +24,13 @@ use Joomla\CMS\Language\Text;
   // Add a "Cancel" button to exit the new "{{Item}}" page
   Toolbar::cancel('{{item}}.cancel');
   // Set the title of the new "{{Item}}" page
-  Toolbar::title(Text::_('COM_{{NAME}}_VIEW_CARD_CREATE'));
+  Toolbar::title(Text::_('COM_{{NAME}}_VIEW_{{ITEM}}_CREATE'));
 })();
 ?>
 <form method='POST' name='adminForm' id='adminForm'>
   <fieldset class='adminform form-horizontal'>
     <legend>
-      <?= $this->escape(Text::_('COM_{{NAME}}_VIEW_CARD_DETAILS')) ?>
+      <?= $this->escape(Text::_('COM_{{NAME}}_VIEW_{{ITEM}}_DETAILS')) ?>
     </legend>
     <div class='row-fluid'>
       <div class='span6'>

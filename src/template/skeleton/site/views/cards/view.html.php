@@ -38,7 +38,7 @@ class {{Name}}View{{Item}}s extends BaseView {
    * The translated page title for the current view/layout.
    *
    * This property is equivalent to the unescaped, translated value of the
-   * language constant 'COM_{{NAME}}_VIEW_CARDS_READ'.
+   * language constant 'COM_{{NAME}}_VIEW_{{ITEM}}S_READ'.
    *
    * @var  string
    */
@@ -63,7 +63,7 @@ class {{Name}}View{{Item}}s extends BaseView {
     $app = Factory::getApplication();
     $doc = Factory::getDocument();
     // Set the document title to the name of the current view/layout
-    $this->title = Text::_('COM_{{NAME}}_VIEW_CARDS_READ');
+    $this->title = Text::_('COM_{{NAME}}_VIEW_{{ITEM}}S_READ');
     $doc->setTitle($this->title.' - '.$app->get('sitename'));
     // Set the layout manually since we only have one layout
     $this->setLayout('read');

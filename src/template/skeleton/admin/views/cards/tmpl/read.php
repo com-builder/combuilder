@@ -29,8 +29,8 @@ $listDir   = $this->escape($this->filterOrderDir);
  */
 (function($view) {
   // Fetch applicable language translations for the toolbar configuration
-  $deleteMsg = Text::_('COM_{{NAME}}_VIEW_CARDS_DELETE_CONFIRM');
-  $title     = Text::_('COM_{{NAME}}_VIEW_CARDS_READ');
+  $deleteMsg = Text::_('COM_{{NAME}}_VIEW_{{ITEM}}S_DELETE_CONFIRM');
+  $title     = Text::_('COM_{{NAME}}_VIEW_{{ITEM}}S_READ');
   // Add a "New" button to create a new "{{Item}}"
   Toolbar::addNew('{{item}}.add');
   // Add a "Publish" button to publish one or more "{{Item}}"
@@ -64,14 +64,14 @@ $listDir   = $this->escape($this->filterOrderDir);
             <?= HTML::_('grid.checkall') ?>
           </th>
           <th width='4%'>
-            <?= $this->escape(Text::_('COM_{{NAME}}_CARD_COL_PUBLISHED')) ?>
+            <?= $this->escape(Text::_('COM_{{NAME}}_{{ITEM}}_COL_PUBLISHED')) ?>
           </th>
           <th>
-            <?= HTML::_('grid.sort', 'COM_{{NAME}}_CARD_COL_NAME',
+            <?= HTML::_('grid.sort', 'COM_{{NAME}}_{{ITEM}}_COL_NAME',
               '{{item}}s.name', $listDir, $listOrder) ?>
           </th>
           <th width='16%' style='text-align: right;'>
-            <?= HTML::_('grid.sort', 'COM_{{NAME}}_CARD_COL_ID',
+            <?= HTML::_('grid.sort', 'COM_{{NAME}}_{{ITEM}}_COL_ID',
               '{{item}}s.id', $listDir, $listOrder) ?>
           </th>
         </tr>
@@ -116,7 +116,7 @@ $listDir   = $this->escape($this->filterOrderDir);
     </table>
   <?php } else { ?>
     <div class='alert alert-no-items'>
-      <?= $this->escape(Text::_('COM_{{NAME}}_VIEW_CARDS_NONE')) ?>
+      <?= $this->escape(Text::_('COM_{{NAME}}_VIEW_{{ITEM}}S_NONE')) ?>
     </div>
   <?php } ?>
   <input type='hidden' name='boxchecked' value='0'/>

@@ -8,12 +8,12 @@
  !-->
 <form>
   <fieldset name='default'>
-    <field name='published' type='radio' class='btn-group btn-group-yesno radio' label='COM_{{NAME}}_CARD_COL_PUBLISHED' description='COM_{{NAME}}_CARD_COL_PUBLISHED_DESC' default='1' required='1'>
+    <field name='published' type='radio' class='btn-group btn-group-yesno radio' label='COM_{{NAME}}_{{ITEM}}_COL_PUBLISHED' description='COM_{{NAME}}_{{ITEM}}_COL_PUBLISHED_DESC' default='1' required='1'>
       <option value='1'>JYES</option>
       <option value='0'>JNO</option>
     </field>
-    <field name='name' type='text' label='COM_{{NAME}}_CARD_COL_NAME' description='COM_{{NAME}}_CARD_COL_NAME_DESC' required='1'/>
-    <field name='phone' type='text' label='COM_{{NAME}}_CARD_COL_PHONE' description='COM_{{NAME}}_CARD_COL_PHONE_DESC' required='1'/>
+    <field name='name' type='text' label='COM_{{NAME}}_{{ITEM}}_COL_NAME' description='COM_{{NAME}}_{{ITEM}}_COL_NAME_DESC' required='1'/>
+    <field name='phone' type='text' label='COM_{{NAME}}_{{ITEM}}_COL_PHONE' description='COM_{{NAME}}_{{ITEM}}_COL_PHONE_DESC' required='1'/>
     <field name='id' type='hidden'/>
   </fieldset>
 </form>

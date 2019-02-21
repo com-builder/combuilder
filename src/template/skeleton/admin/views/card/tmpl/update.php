@@ -27,13 +27,13 @@ use Joomla\CMS\Language\Text;
   // Add a "Cancel" button to exit the edit page
   Toolbar::cancel('{{item}}.cancel', 'JTOOLBAR_CLOSE');
   // Set the title of the edit page
-  Toolbar::title(Text::_('COM_{{NAME}}_VIEW_CARD_UPDATE'));
+  Toolbar::title(Text::_('COM_{{NAME}}_VIEW_{{ITEM}}_UPDATE'));
 })();
 ?>
 <form method='POST' name='adminForm' id='adminForm'>
   <fieldset class='adminform form-horizontal'>
     <legend>
-      <?= Text::_('COM_{{NAME}}_VIEW_CARD_DETAILS') ?>
+      <?= Text::_('COM_{{NAME}}_VIEW_{{ITEM}}_DETAILS') ?>
     </legend>
     <div class='row-fluid'>
       <div class='span6'>

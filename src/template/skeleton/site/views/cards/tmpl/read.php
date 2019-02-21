@@ -19,7 +19,7 @@ use Joomla\CMS\Language\Text;
       <thead>
         <tr>
           <th>
-            <?= $this->escape(Text::_('COM_{{NAME}}_CARD_COL_NAME')) ?>
+            <?= $this->escape(Text::_('COM_{{NAME}}_{{ITEM}}_COL_NAME')) ?>
           </th>
         </tr>
       </thead>
@@ -49,7 +49,7 @@ use Joomla\CMS\Language\Text;
     </table>
   <?php } else { ?>
     <div class='alert alert-no-items'>
-      <?= $this->escape(Text::_('COM_{{NAME}}_VIEW_CARDS_NONE')) ?>
+      <?= $this->escape(Text::_('COM_{{NAME}}_VIEW_{{ITEM}}S_NONE')) ?>
     </div>
   <?php } ?>
 </form>

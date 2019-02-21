@@ -42,7 +42,7 @@ class {{Name}}View{{Item}} extends BaseView {
     // Check if an invalid response was retrieved from the database
     if (!isset($this->{{item}})) {
       // Throw an exception since the {{item}} doesn't exist (or is unpublished)
-      throw new \Exception(Text::_('COM_{{NAME}}_VIEW_CARD_404'), 404);
+      throw new \Exception(Text::_('COM_{{NAME}}_VIEW_{{ITEM}}_404'), 404);
     }
     // Fetch references to Joomla's application and document object instances
     $app = Factory::getApplication();
