@@ -10,9 +10,7 @@ export default class Create extends Command {
   static description = 'describe the command here';
 
   static examples = [
-    `$ joomlafy create
-hello world from ./src/hello.ts!
-`,
+    `$ joomlafy create -n name_of_component -i name_of_view`,
   ];
 
   static flags = {
