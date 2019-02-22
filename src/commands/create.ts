@@ -1,4 +1,5 @@
 import {Command, flags} from '@oclif/command'
+import * as fs from 'fs';
 
 export default class Create extends Command {
   static description = 'describe the command here'
@@ -22,10 +23,6 @@ hello world from ./src/hello.ts!
   async run() {
     const {args, flags} = this.parse(Create)
 
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from ./src/commands/hello.ts`)
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
-    }
+    this.log(fs.readdirSync('src/template/skeleton').join("\n"));
   }
 }
