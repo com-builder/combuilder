@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS `#__{{name}}_{{item}}s` (
   `checked_out`      INT(11) UNSIGNED NOT NULL DEFAULT 0,
   `checked_out_time` DATETIME         NOT NULL DEFAULT '1970-01-01 00:00:01',
   `name`             VARCHAR(191)     NOT NULL,
-  `phone`            VARCHAR(191)     NOT NULL,
   PRIMARY KEY (`id`),
   KEY `published` (`published`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
