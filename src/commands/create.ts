@@ -1,5 +1,6 @@
 import {Command, flags} from '@oclif/command'
 import * as fs from 'fs';
+import * as extra from 'fs-extra';
 
 export default class Create extends Command {
   static description = 'describe the command here';
@@ -26,7 +27,12 @@ hello world from ./src/hello.ts!
 
   async run() {
     const {args, flags} = this.parse(Create);
-
+    // Create component with com_ prefix
+    const comName = `com_${flags.name}`;
+    // Create component directory
+    fs.mkdirSync(comName);
+    // Copy over template to new directory
+    extra.copySync('src/template/skeleton', comName);
     this.log(fs.readdirSync('src/template/skeleton').join("\n"));
   }
 }
