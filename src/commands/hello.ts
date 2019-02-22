@@ -4,7 +4,7 @@ export default class Create extends Command {
   static description = 'describe the command here'
 
   static examples = [
-    `$ joomlafy hello
+    `$ joomlafy create
 hello world from ./src/hello.ts!
 `,
   ]
