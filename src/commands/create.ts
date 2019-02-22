@@ -44,7 +44,7 @@ hello world from ./src/hello.ts!
     fs.mkdirSync(comName);
     // Copy over template to new directory
     extra.copySync('src/template/skeleton', comName);
-
+    // Rename placeholder files in newly created component source
     this.renameFiles(comName, flags.name, flags.view);
 
     this.log(fs.readdirSync(comName).join("\n"));
