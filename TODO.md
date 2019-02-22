@@ -16,16 +16,16 @@
 ## Potential Command Structure
 
 ### Component creation
-`component-builder create component-name`
+`joomlafy create component-name`
 
 ### Adding section
-`component-builder add sectionName column^1..column^n`
+`joomlafy add sectionName column^1..column^n`
 
 ### Adding column
-`component-builder add-column columnName -t type`
+`joomlafy add-column columnName -t type`
 
 ### Removing section
-`component-builder remove sectionName`
+`joomlafy remove sectionName`
 
 ### Removing column
-`component-builder remove-column columnName`
+`joomlafy remove-column columnName`

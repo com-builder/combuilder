@@ -1,12 +1,12 @@
 {
-  "name": "component-builder",
+  "name": "joomlafy",
   "description": "A CLI utility for generating Joomla components",
   "version": "0.0.0",
   "author": "Jeremy Jackson @jeremyvii",
   "bin": {
-    "component-builder": "./bin/run"
+    "joomlafy": "./bin/run"
   },
-  "bugs": "https://github.com/jeremyvii/component-builder/issues",
+  "bugs": "https://github.com/jeremyvii/joomlafy/issues",
   "dependencies": {
     "@oclif/command": "^1.5.8",
     "@oclif/config": "^1.12.0",
@@ -37,7 +37,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/jeremyvii/component-builder",
+  "homepage": "https://github.com/jeremyvii/joomlafy",
   "keywords": [
     "oclif"
   ],
@@ -45,12 +45,12 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "component-builder",
+    "bin": "joomlafy",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "jeremyvii/component-builder",
+  "repository": "jeremyvii/joomlafy",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "tslint -p test -t stylish",

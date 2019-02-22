@@ -1,12 +1,12 @@
-component-builder
+joomlafy
 =================
 
 A CLI utility for generating Joomla components
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/component-builder.svg)](https://npmjs.org/package/component-builder)
-[![Downloads/week](https://img.shields.io/npm/dw/component-builder.svg)](https://npmjs.org/package/component-builder)
-[![License](https://img.shields.io/npm/l/component-builder.svg)](https://github.com/jeremyvii/component-builder/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/joomlafy.svg)](https://npmjs.org/package/joomlafy)
+[![Downloads/week](https://img.shields.io/npm/dw/joomlafy.svg)](https://npmjs.org/package/joomlafy)
+[![License](https://img.shields.io/npm/l/joomlafy.svg)](https://github.com/jeremyvii/joomlafy/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
@@ -15,29 +15,29 @@ A CLI utility for generating Joomla components
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g component-builder
-$ component-builder COMMAND
+$ npm install -g joomlafy
+$ joomlafy COMMAND
 running command...
-$ component-builder (-v|--version|version)
-component-builder/0.0.0 linux-x64 node-v8.10.0
-$ component-builder --help [COMMAND]
+$ joomlafy (-v|--version|version)
+joomlafy/0.0.0 linux-x64 node-v8.10.0
+$ joomlafy --help [COMMAND]
 USAGE
-  $ component-builder COMMAND
+  $ joomlafy COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`component-builder hello [FILE]`](#component-builder-hello-file)
-* [`component-builder help [COMMAND]`](#component-builder-help-command)
+* [`joomlafy hello [FILE]`](#joomlafy-hello-file)
+* [`joomlafy help [COMMAND]`](#joomlafy-help-command)
 
-## `component-builder hello [FILE]`
+## `joomlafy hello [FILE]`
 
 describe the command here
 
 ```
 USAGE
-  $ component-builder hello [FILE]
+  $ joomlafy hello [FILE]
 
 OPTIONS
   -f, --force
@@ -45,19 +45,19 @@ OPTIONS
   -n, --name=name  name to print
 
 EXAMPLE
-  $ component-builder hello
+  $ joomlafy hello
   hello world from ./src/hello.ts!
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/jeremyvii/component-builder/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/hello.ts](https://github.com/jeremyvii/joomlafy/blob/v0.0.0/src/commands/hello.ts)_
 
-## `component-builder help [COMMAND]`
+## `joomlafy help [COMMAND]`
 
-display help for component-builder
+display help for joomlafy
 
 ```
 USAGE
-  $ component-builder help [COMMAND]
+  $ joomlafy help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
