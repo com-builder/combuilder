@@ -82,6 +82,8 @@ class {{Name}}View{{Item}}s extends BaseView {
   public function display($template = NULL) {
     // Fetch the application object instance
     $this->app = Factory::getApplication();
+    // Load the submenu
+    {{Name}}Helper::addSubmenu('{{items}}');
     // Fetch the "{{Item}}s" and pagination state from the database
     $this->{{item}}s      = $this->get('Items');
     $this->pagination = $this->get('Pagination');

@@ -23,6 +23,8 @@ use Joomla\CMS\MVC\Controller\BaseController;
  * @throws  \Exception  If the task couldn't be found.
  */
 (function() {
+  // Require the helper
+  require_once JPATH_COMPONENT_ADMINISTRATOR . '/helpers/{{name}}.php';
   // Fetch the client's desired class task from its request input
   $input = Factory::getApplication()->input;
   // Check whether a view was supplied in the application input parameters
