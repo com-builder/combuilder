@@ -2,6 +2,10 @@ import {Command, flags} from '@oclif/command'
 import * as fs from 'fs';
 import * as extra from 'fs-extra';
 
+interface Placeholders {
+  [key: string]: string
+};
+
 export default class Create extends Command {
   static description = 'describe the command here';
 
@@ -19,6 +23,13 @@ hello world from ./src/hello.ts!
       description: 'name of the component you wish to create',
       required: true,
     }),
+
+    view: flags.string({
+      char: 'i',
+      description: 'name of first view (item and list) to create',
+      required: true
+    }),
+
     // flag with no value (-f, --force)
     force: flags.boolean({char: 'f'}),
   };
@@ -34,22 +45,29 @@ hello world from ./src/hello.ts!
     // Copy over template to new directory
     extra.copySync('src/template/skeleton', comName);
 
-    this.renameFiles(comName, flags.name);
+    this.renameFiles(comName, flags.name, flags.view);
 
     this.log(fs.readdirSync(comName).join("\n"));
   }
 
-  protected renameFiles(path: string, name: string): void {
+  protected renameFiles(path: string, name: string, view: string): void {
     let items = fs.readdirSync(path);
     for (let item of items) {
-      const newPath = `${path}/${item}`;
-      if (fs.lstatSync(newPath).isDirectory()) {
-        this.renameFiles(newPath, name);
-      } else {
-        const comTemp = '-component_name-';
-        if (item.includes(comTemp)) {
-          fs.renameSync(`${path}/${item}`, `${path}/${item.replace(comTemp, name)}`);
+      let newPath = `${path}/${item}`;
+      const placeholders: Placeholders = {
+        '-component_name-': name,
+        '-item-': view,
+        '-items-': `${view}s`,
+      };
+      for (let placeholder in placeholders) {
+        if (item.includes(placeholder)) {
+          const renamed = item.replace(placeholder, placeholders[placeholder]);
+          fs.renameSync(`${path}/${item}`, `${path}/${renamed}`);
+          newPath = `${path}/${renamed}`;
         }
+      }
+      if (fs.lstatSync(newPath).isDirectory()) {
+        this.renameFiles(newPath, name, view);
       }
     }
   }
