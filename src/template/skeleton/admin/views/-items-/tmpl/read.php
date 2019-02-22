@@ -51,78 +51,83 @@ $listDir   = $this->escape($this->filterOrderDir);
   Toolbar::title($title);
 })($this);
 ?>
-<?= HTML::_('formbehavior.chosen', 'select') ?>
-<form method='POST' id='adminForm' name='adminForm'>
-  <div class="row-fluid">
-    <?= Layout::render('joomla.searchtools.default', ['view' => $this]) ?>
-  </div>
-  <?php if (count($this->{{item}}s) > 0) { ?>
-    <table class='table table-striped table-hover'>
-      <thead>
-        <tr>
-          <th width='1%'>
-            <?= HTML::_('grid.checkall') ?>
-          </th>
-          <th width='4%'>
-            <?= $this->escape(Text::_('COM_{{NAME}}_{{ITEM}}_COL_PUBLISHED')) ?>
-          </th>
-          <th>
-            <?= HTML::_('grid.sort', 'COM_{{NAME}}_{{ITEM}}_COL_NAME',
-              '{{item}}s.name', $listDir, $listOrder) ?>
-          </th>
-          <th width='16%' style='text-align: right;'>
-            <?= HTML::_('grid.sort', 'COM_{{NAME}}_{{ITEM}}_COL_ID',
-              '{{item}}s.id', $listDir, $listOrder) ?>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php $userID = intval(Factory::getUser()->id); ?>
-        <?php foreach ($this->{{item}}s as $i => $row) { ?>
-          <?php $row->checkedOut = intval($row->checkedOut); ?>
+<div id="j-sidebar-container" class="span2">
+  <?= HTML::_('sidebar.render') ?>
+</div>
+<div id="j-main-container" class="span10">
+  <?= HTML::_('formbehavior.chosen', 'select') ?>
+  <form method='POST' id='adminForm' name='adminForm'>
+    <div class="row-fluid">
+      <?= Layout::render('joomla.searchtools.default', ['view' => $this]) ?>
+    </div>
+    <?php if (count($this->{{item}}s) > 0) { ?>
+      <table class='table table-striped table-hover'>
+        <thead>
           <tr>
-            <td>
-              <?= HTML::_('grid.id', $i, $row->id) ?>
-            </td>
-            <td style='text-align: right;'>
-              <?= HTML::_('jgrid.published', $row->published, $i,
-                          '{{item}}s.', TRUE, 'cb') ?>
-            </td>
-            <td>
-              <?php if ($row->checkedOut > 0) { ?>
-                <?= HTML::_('jgrid.checkedout', $i, $row->editor,
-                            $row->checkedOutTime, '{{item}}s.',
-                            $userID === $row->checkedOut) ?>
-              <?php } ?>
-              <a href="<?= $this->get{{Item}}UpdateLink($row) ?>">
-                <?= $this->escape($row->name) ?>
-              </a>
-            </td>
-            <td style='text-align: right;'>
-              <?= $this->escape($row->id) ?>
+            <th width='1%'>
+              <?= HTML::_('grid.checkall') ?>
+            </th>
+            <th width='4%'>
+              <?= $this->escape(Text::_('COM_{{NAME}}_{{ITEM}}_COL_PUBLISHED')) ?>
+            </th>
+            <th>
+              <?= HTML::_('grid.sort', 'COM_{{NAME}}_{{ITEM}}_COL_NAME',
+                '{{item}}s.name', $listDir, $listOrder) ?>
+            </th>
+            <th width='16%' style='text-align: right;'>
+              <?= HTML::_('grid.sort', 'COM_{{NAME}}_{{ITEM}}_COL_ID',
+                '{{item}}s.id', $listDir, $listOrder) ?>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php $userID = intval(Factory::getUser()->id); ?>
+          <?php foreach ($this->{{item}}s as $i => $row) { ?>
+            <?php $row->checkedOut = intval($row->checkedOut); ?>
+            <tr>
+              <td>
+                <?= HTML::_('grid.id', $i, $row->id) ?>
+              </td>
+              <td style='text-align: right;'>
+                <?= HTML::_('jgrid.published', $row->published, $i,
+                            '{{item}}s.', TRUE, 'cb') ?>
+              </td>
+              <td>
+                <?php if ($row->checkedOut > 0) { ?>
+                  <?= HTML::_('jgrid.checkedout', $i, $row->editor,
+                              $row->checkedOutTime, '{{item}}s.',
+                              $userID === $row->checkedOut) ?>
+                <?php } ?>
+                <a href="<?= $this->get{{Item}}UpdateLink($row) ?>">
+                  <?= $this->escape($row->name) ?>
+                </a>
+              </td>
+              <td style='text-align: right;'>
+                <?= $this->escape($row->id) ?>
+              </td>
+            </tr>
+          <?php } ?>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan='4'>
+              <div style='float: left'>
+                <?= $this->pagination->getListFooter() ?>
+              </div>
             </td>
           </tr>
-        <?php } ?>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan='4'>
-            <div style='float: left'>
-              <?= $this->pagination->getListFooter() ?>
-            </div>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
-  <?php } else { ?>
-    <div class='alert alert-no-items'>
-      <?= $this->escape(Text::_('COM_{{NAME}}_VIEW_{{ITEM}}S_NONE')) ?>
-    </div>
-  <?php } ?>
-  <input type='hidden' name='boxchecked' value='0'/>
-  <input type='hidden' name='task' value='{{item}}s.display'/>
-  <input type='hidden' name='view' value='{{item}}s'/>
-  <input type='hidden' name='filter_order' value='<?= $listOrder ?>'/>
-  <input type='hidden' name='filter_order_Dir' value='<?= $listDirn ?>'/>
-  <?= HTML::_('form.token') ?>
-</form>
+        </tfoot>
+      </table>
+    <?php } else { ?>
+      <div class='alert alert-no-items'>
+        <?= $this->escape(Text::_('COM_{{NAME}}_VIEW_{{ITEM}}S_NONE')) ?>
+      </div>
+    <?php } ?>
+    <input type='hidden' name='boxchecked' value='0'/>
+    <input type='hidden' name='task' value='{{item}}s.display'/>
+    <input type='hidden' name='view' value='{{item}}s'/>
+    <input type='hidden' name='filter_order' value='<?= $listOrder ?>'/>
+    <input type='hidden' name='filter_order_Dir' value='<?= $listDirn ?>'/>
+    <?= HTML::_('form.token') ?>
+  </form>
+</div>
