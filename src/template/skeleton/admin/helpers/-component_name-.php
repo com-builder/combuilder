@@ -30,7 +30,7 @@ abstract class {{Name}}Helper extends ContentHelper {
 
 	public static function addSubmenu($submenu) {
 		HTML::_('sidebar.addEntry',
-	  	Text::_('COM_{{NAME}}_SUBMENU_MOWERS'),
+	  	Text::_('COM_{{NAME}}_SUBMENU_{{ITEMS}}'),
 			'index.php?option=com_{{name}}&view={{items}}',
 			$submenu == '{{items}}'
 		);
