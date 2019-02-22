@@ -33,6 +33,24 @@ hello world from ./src/hello.ts!
     fs.mkdirSync(comName);
     // Copy over template to new directory
     extra.copySync('src/template/skeleton', comName);
-    this.log(fs.readdirSync('src/template/skeleton').join("\n"));
+
+    this.renameFiles(comName, flags.name);
+
+    this.log(fs.readdirSync(comName).join("\n"));
+  }
+
+  protected renameFiles(path: string, name: string): void {
+    let items = fs.readdirSync(path);
+    for (let item of items) {
+      const newPath = `${path}/${item}`;
+      if (fs.lstatSync(newPath).isDirectory()) {
+        this.renameFiles(newPath, name);
+      } else {
+        const comTemp = '-component_name-';
+        if (item.includes(comTemp)) {
+          fs.renameSync(`${path}/${item}`, `${path}/${item.replace(comTemp, name)}`);
+        }
+      }
+    }
   }
 }
