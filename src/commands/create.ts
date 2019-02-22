@@ -50,23 +50,45 @@ hello world from ./src/hello.ts!
     this.log(fs.readdirSync(comName).join("\n"));
   }
 
+  /**
+   * Recursively get rename all files and folders containing placeholder names
+   * in newly generated component folder
+   *
+   * @param   {string}  path  Path to start list operation in
+   * @param   {string}  name  Name of component without com_ prefix
+   * @param   {string}  view  Name of view to rename
+   *
+   * @return  {void}
+   */
   protected renameFiles(path: string, name: string, view: string): void {
+    // Get list of items to start renaming
     let items = fs.readdirSync(path);
+
     for (let item of items) {
+      // Create path to current file or folder for manipulation if needed
       let newPath = `${path}/${item}`;
+      // Files and folders containing the following names with be replaced
       const placeholders: Placeholders = {
         '-component_name-': name,
         '-item-': view,
         '-items-': `${view}s`,
       };
+      // Loop over each in order to potentially rename
       for (let placeholder in placeholders) {
+        // Check if current item matches current placeholder name
         if (item.includes(placeholder)) {
+          // Replace placeholder with desired replacement
           const renamed = item.replace(placeholder, placeholders[placeholder]);
+          // Use Node JS API to rename file or folder
           fs.renameSync(`${path}/${item}`, `${path}/${renamed}`);
+          // Reset newPath part in case current item is a folder. Otherwise
+          // recursive operation would not go deeper
           newPath = `${path}/${renamed}`;
         }
       }
+      // Check if current item is folder
       if (fs.lstatSync(newPath).isDirectory()) {
+        // Recursive call current method to start the next folder operation
         this.renameFiles(newPath, name, view);
       }
     }
