@@ -10,37 +10,36 @@ export default class Create extends Command {
   static description = 'describe the command here';
 
   static examples = [
-    `$ joomlafy create -n name_of_component -i name_of_view`,
+    `$ joomlafy create name_of_component name_of_view`,
   ];
 
   static flags = {
     help: flags.help({char: 'h'}),
-    // flag with a value (-n, --name=VALUE)
-    name: flags.string({
-      char: 'n',
-      description: 'name of the component you wish to create',
-      required: true,
-    }),
-
-    view: flags.string({
-      char: 'i',
-      description: 'name of first view (item and list) to create',
-      required: true
-    }),
   };
 
-  static args = [{name: 'file'}];
+  static args = [
+    {
+      name: 'name',
+      description: 'name of the component you wish to create',
+      required: true,
+    },
+    {
+      name: 'view',
+      description: 'name of first view (item and list) to create',
+      required: true
+    }
+  ];
 
   async run() {
-    const {args, flags} = this.parse(Create);
+    const { args } = this.parse(Create);
     // Create component with com_ prefix
-    const comName = `com_${flags.name}`;
+    const comName = `com_${args.name}`;
     // Create component directory
     fs.mkdirSync(comName);
     // Copy over template to new directory
     extra.copySync('src/template/skeleton', comName);
     // Rename placeholder files in newly created component source
-    this.renameFiles(comName, flags.name, flags.view);
+    this.renameFiles(comName, args.name, args.view);
 
     this.log(fs.readdirSync(comName).join("\n"));
   }
