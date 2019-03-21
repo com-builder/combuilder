@@ -27,9 +27,6 @@ export default class Create extends Command {
       description: 'name of first view (item and list) to create',
       required: true
     }),
-
-    // flag with no value (-f, --force)
-    force: flags.boolean({char: 'f'}),
   };
 
   static args = [{name: 'file'}];
