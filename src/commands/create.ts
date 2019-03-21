@@ -42,13 +42,37 @@ export default class Create extends Command {
   ];
 
   static flags = {
+    author: flags.string({
+      char: 'a',
+      description: 'author name for component metadata',
+      required: false,
+    }),
+
+    createDate: flags.string({
+      char: 'd',
+      description: 'created date for component metadata, current date is used if this option isn\'t present',
+      required: false,
+    }),
+
+    email: flags.string({
+      char: 'e',
+      description: 'email address for component metadata',
+      required: false,
+    }),
+
     help: flags.help({char: 'h'}),
+
+    url: flags.string({
+      char: 'u',
+      description: 'url for component metadata',
+      required: false
+    }),
 
     useGit: flags.boolean({
       char: 'g',
       description: 'pull meta information from git configuration',
       required: false
-    })
+    }),
   };
 
   /**
@@ -94,11 +118,12 @@ export default class Create extends Command {
     // Rename placeholder files in newly created component source
     this.renameFiles(comName, args.name, args.view);
 
+    console.log(flags);
+
     // Check if user requested to use name and email from their git
     // configuration
     if (flags.useGit) {
       const gitSettings = this.getGitSettings();
-      console.log(gitSettings);
     }
 
     this.log(fs.readdirSync(comName).join("\n"));
