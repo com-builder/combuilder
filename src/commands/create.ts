@@ -7,7 +7,7 @@ interface Placeholders {
 };
 
 export default class Create extends Command {
-  static description = 'describe the command here';
+  static description = 'creates a Joomla component based on options provided';
 
   /**
    * List of examples to display when just the main command is ran
