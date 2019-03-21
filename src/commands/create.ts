@@ -1,4 +1,4 @@
-import {Command, flags} from '@oclif/command'
+import {Command, flags} from '@oclif/command';
 import * as fs from 'fs';
 import * as extra from 'fs-extra';
 
@@ -17,6 +17,11 @@ export default class Create extends Command {
     help: flags.help({char: 'h'}),
   };
 
+  /**
+   * List of arguments specific to this command
+   *
+   * @var  {Arg[]}
+   */
   static args = [
     {
       name: 'name',
