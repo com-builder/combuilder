@@ -12,7 +12,9 @@
     "@oclif/config": "^1.12.0",
     "@oclif/plugin-help": "^2.1.4",
     "@types/fs-extra": "^5.0.5",
+    "@types/git-config": "0.0.29",
     "fs-extra": "^7.0.1",
+    "git-config": "0.0.7",
     "tslib": "^1.9.3"
   },
   "devDependencies": {

@@ -1,10 +1,28 @@
 import {Command, flags} from '@oclif/command';
 import * as fs from 'fs';
 import * as extra from 'fs-extra';
+import * as gitConfig from 'git-config';
+
+/**
+ * User's name and email pull from git settings
+ */
+interface GitSettings {
+  name: string,
+  email: string,
+}
 
 interface Placeholders {
-  [key: string]: string
+  [key: string]: string,
 };
+
+/**
+ * What is returned by `git-config`
+ */
+interface GitSync {
+  user: {
+    [key: string]: string,
+  }
+}
 
 export default class Create extends Command {
   /**
@@ -25,6 +43,12 @@ export default class Create extends Command {
 
   static flags = {
     help: flags.help({char: 'h'}),
+
+    useGit: flags.boolean({
+      char: 'g',
+      description: 'pull meta information from git configuration',
+      required: false
+    })
   };
 
   /**
@@ -45,8 +69,22 @@ export default class Create extends Command {
     }
   ];
 
+  /**
+   * Pull name and email from user's git configuration
+   *
+   * @return  {GitSettings}  Object containing user's name and email from git
+   *                         settings
+   */
+  protected getGitSettings(): GitSettings {
+    const settings = <GitSync>gitConfig.sync();
+    return {
+      name: settings.user.name,
+      email: settings.user.email,
+    }
+  }
+
   async run() {
-    const { args } = this.parse(Create);
+    const { args, flags } = this.parse(Create);
     // Create component with com_ prefix
     const comName = `com_${args.name}`;
     // Create component directory
@@ -55,6 +93,13 @@ export default class Create extends Command {
     extra.copySync('src/template/skeleton', comName);
     // Rename placeholder files in newly created component source
     this.renameFiles(comName, args.name, args.view);
+
+    // Check if user requested to use name and email from their git
+    // configuration
+    if (flags.useGit) {
+      const gitSettings = this.getGitSettings();
+      console.log(gitSettings);
+    }
 
     this.log(fs.readdirSync(comName).join("\n"));
   }
