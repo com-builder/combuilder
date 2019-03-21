@@ -9,6 +9,11 @@ interface Placeholders {
 export default class Create extends Command {
   static description = 'describe the command here';
 
+  /**
+   * List of examples to display when just the main command is ran
+   *
+   * @var  {string[]}
+   */
   static examples = [
     `$ joomlafy create NAME VIEW`,
   ];
