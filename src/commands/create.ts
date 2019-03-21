@@ -2,6 +2,7 @@ import {Command, flags} from '@oclif/command';
 import * as fs from 'fs';
 import * as extra from 'fs-extra';
 import * as gitConfig from 'git-config';
+import { IFlag } from '@oclif/parser/lib/flags';
 
 /**
  * User's name and email pull from git settings
@@ -22,6 +23,22 @@ interface GitSync {
   user: {
     [key: string]: string,
   }
+}
+
+interface Replacement {
+  author: string,
+  createDate: string,
+  email: string,
+  item: string,
+  Item: string,
+  ITEM: string,
+  items: string,
+  Items: string,
+  ITEMS: string,
+  name: string,
+  Name: string,
+  NAME: string,
+  url: string,
 }
 
 export default class Create extends Command {
@@ -94,6 +111,77 @@ export default class Create extends Command {
   ];
 
   /**
+   * Create object replacement data based on CLI arguments
+   *
+   * @return  {Replacement}  Key is what will be replaced, value is the
+   *                         replacement
+   */
+  protected createReplacementData(): Replacement {
+    const { args, flags } = this.parse(Create);
+    let author = '';
+    if (flags.author) {
+      author = flags.author;
+    }
+
+    let createDate = '';
+    if (flags.createDate) {
+      createDate = flags.createDate;
+    } else {
+      createDate = (new Date()).toLocaleDateString();
+    }
+
+    let email = '';
+    if (flags.email) {
+      email = flags.email;
+    }
+
+    let url = '';
+    if  (flags.url) {
+      url = flags.url;
+    }
+
+    // Check if user requested to use name and email from their git
+    // configuration
+    if (flags.useGit) {
+      const gitSettings = this.getGitSettings();
+      author = gitSettings.name;
+      email = gitSettings.email;
+    }
+
+    const capitalize = (s: string): string => {
+      if (typeof s !== 'string') return '';
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
+    let name = <string>args.name;
+    let Name = capitalize(name);
+    let NAME = name.toUpperCase();
+
+    let item = <string>args.view;
+    let Item = capitalize(item);
+    let ITEM = item.toUpperCase();
+
+    let items = `${item}s`;
+    let Items = `${Item}s`;
+    let ITEMS = `${ITEM}S`;
+    return {
+      author,
+      createDate,
+      email,
+      item,
+      Item,
+      ITEM,
+      items,
+      Items,
+      ITEMS,
+      name,
+      Name,
+      NAME,
+      url,
+    }
+  }
+
+  /**
    * Pull name and email from user's git configuration
    *
    * @return  {GitSettings}  Object containing user's name and email from git
@@ -108,7 +196,7 @@ export default class Create extends Command {
   }
 
   async run() {
-    const { args, flags } = this.parse(Create);
+    const { args } = this.parse(Create);
     // Create component with com_ prefix
     const comName = `com_${args.name}`;
     // Create component directory
@@ -117,14 +205,7 @@ export default class Create extends Command {
     extra.copySync('src/template/skeleton', comName);
     // Rename placeholder files in newly created component source
     this.renameFiles(comName, args.name, args.view);
-
-    console.log(flags);
-
-    // Check if user requested to use name and email from their git
-    // configuration
-    if (flags.useGit) {
-      const gitSettings = this.getGitSettings();
-    }
+    console.log(this.createReplacementData());
 
     this.log(fs.readdirSync(comName).join("\n"));
   }
