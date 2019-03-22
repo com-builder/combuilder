@@ -206,7 +206,7 @@ export default class Create extends Command {
     // Rename placeholder files in newly created component source
     this.renameFiles(comName, args.name, args.view);
 
-    this.replaceData(comName, args.name, args.view);
+    this.replaceData(comName);
 
     this.log(fs.readdirSync(comName).join("\n"));
   }
@@ -255,33 +255,43 @@ export default class Create extends Command {
     }
   }
 
-  protected replaceData(path: string, name: string, view: string): void {
-    // Get list of items to start renaming
+  /**
+   * Recursively replace placeholders with data provided by the user
+   *
+   * @param   {string}  path  Path to current directory context
+   *
+   * @return  {void}
+   */
+  protected replaceData(path: string): void {
     let items = fs.readdirSync(path);
-
+    // Get data to replace. The object key is what will be replaced, the value
+    // is the replacement
     let replacements = this.createReplacementData();
 
     for (let item of items) {
-      // Create path to current file or folder for manipulation if needed
+      // Build path to current item, if this is a directory it will be passed
+      // to next recursive call
       let nextPath = `${path}/${item}`;
-      // console.log(newPath);
-      // console.log(replacements);
+      // Check if item is a file to determine file level find and replace is
+      // warranted
       if (fs.lstatSync(nextPath).isFile()) {
         let file = fs.readFileSync(nextPath, 'utf8');
+        // Loop over replacement data in order to start find and replace
         for (let replacement in replacements) {
+          // Build expression for finding values that need replaced globally in
+          // file
           const expr = new RegExp(`(\{\{${replacement}\}\})`, 'g');
           if (expr.test(file)) {
-            // console.log(expr.source);
+            // Replace every instance of found replacement
             file = file.replace(expr, replacements[replacement]);
           }
         }
+        // Rewrite newly modified with replacement data
         fs.writeFileSync(nextPath, file);
-        // console.log(file);
       }
-      // Check if current item is folder
+      // Check if item is a directory in order to start recursive actions
       if (fs.lstatSync(nextPath).isDirectory()) {
-        // Recursive call current method to start the next folder operation
-        this.replaceData(nextPath, name, view);
+        this.replaceData(nextPath);
       }
     }
   }
