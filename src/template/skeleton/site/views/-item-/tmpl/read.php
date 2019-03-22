@@ -18,5 +18,4 @@ use Joomla\CMS\Language\Text;
   <span style='font-weight: bold'>
     <?= $this->escape(Text::_('COM_{{NAME}}_{{ITEM}}_COL_PHONE')) ?>:
   </span>
-  <code><?= $this->escape($this->{{item}}->phone ?? '') ?></code>
 </div>

@@ -23,7 +23,7 @@ class {{Name}}Model{{Item}} extends ItemModel {
    * If an ID is not provided as an argument, this method will attempt to
    * extract an item ID from the application input.
    *
-   * Only the `name` and `phone` columns are included in the result.
+   * Only the `name` columns are included in the result.
    *
    * @param   ?int               $id  A "{{Item}}" identification number.
    *
@@ -48,7 +48,7 @@ class {{Name}}Model{{Item}} extends ItemModel {
       // Fetch a reference to a new query object instance
       $query = $db->getQuery(TRUE);
       // Prepare the query to select the item from the "{{Item}}s" table by ID
-      $query->select($db->quoteName(['name', 'phone']));
+      $query->select($db->quoteName(['name']));
       $query->from($db->quoteName('#__{{name}}_{{item}}s'));
       $query->where($db->quoteName('id').' = '.$id.' AND '.
         $db->quoteName('published').' = 1');
