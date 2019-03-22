@@ -205,7 +205,8 @@ export default class Create extends Command {
     extra.copySync('src/template/skeleton', comName);
     // Rename placeholder files in newly created component source
     this.renameFiles(comName, args.name, args.view);
-
+    // Replace data if information provided via arguments
+    // (@see this.createReplacementData())
     this.replaceData(comName);
 
     this.log(fs.readdirSync(comName).join("\n"));
