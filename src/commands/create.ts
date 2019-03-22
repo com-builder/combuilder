@@ -2,7 +2,6 @@ import {Command, flags} from '@oclif/command';
 import * as fs from 'fs';
 import * as extra from 'fs-extra';
 import * as gitConfig from 'git-config';
-import { IFlag } from '@oclif/parser/lib/flags';
 
 /**
  * User's name and email pull from git settings
@@ -26,6 +25,7 @@ interface GitSync {
 }
 
 interface Replacement {
+  [key: string]: string,
   author: string,
   createDate: string,
   email: string,
@@ -205,7 +205,8 @@ export default class Create extends Command {
     extra.copySync('src/template/skeleton', comName);
     // Rename placeholder files in newly created component source
     this.renameFiles(comName, args.name, args.view);
-    console.log(this.createReplacementData());
+
+    this.replaceData(comName, args.name, args.view);
 
     this.log(fs.readdirSync(comName).join("\n"));
   }
@@ -250,6 +251,37 @@ export default class Create extends Command {
       if (fs.lstatSync(newPath).isDirectory()) {
         // Recursive call current method to start the next folder operation
         this.renameFiles(newPath, name, view);
+      }
+    }
+  }
+
+  protected replaceData(path: string, name: string, view: string): void {
+    // Get list of items to start renaming
+    let items = fs.readdirSync(path);
+
+    let replacements = this.createReplacementData();
+
+    for (let item of items) {
+      // Create path to current file or folder for manipulation if needed
+      let nextPath = `${path}/${item}`;
+      // console.log(newPath);
+      // console.log(replacements);
+      if (fs.lstatSync(nextPath).isFile()) {
+        let file = fs.readFileSync(nextPath, 'utf8');
+        for (let replacement in replacements) {
+          const expr = new RegExp(`(\{\{${replacement}\}\})`, 'g');
+          if (expr.test(file)) {
+            // console.log(expr.source);
+            file = file.replace(expr, replacements[replacement]);
+          }
+        }
+        fs.writeFileSync(nextPath, file);
+        // console.log(file);
+      }
+      // Check if current item is folder
+      if (fs.lstatSync(nextPath).isDirectory()) {
+        // Recursive call current method to start the next folder operation
+        this.replaceData(nextPath, name, view);
       }
     }
   }
