@@ -92,7 +92,7 @@ export default class Create extends Command {
 
     useGit: flags.boolean({
       char: 'g',
-      description: 'pull meta information from git configuration',
+      description: 'populate author and email metadata with name and email from git configuration',
       required: false
     }),
   };
