@@ -209,7 +209,7 @@ export default class Create extends Command {
     // (@see this.createReplacementData())
     this.replaceData(comName);
 
-    this.log(fs.readdirSync(comName).join("\n"));
+    this.log(`${comName} successfully created`);
   }
 
   /**
