@@ -25,6 +25,10 @@ interface GitSync {
   }
 }
 
+/**
+ * Defines data that will be replaced. Key is what will be replaced, value is
+ * the replacement
+ */
 interface Replacement {
   [key: string]: string,
   author: string,
@@ -119,6 +123,7 @@ export default class Create extends Command {
    */
   protected createReplacementData(): Replacement {
     const { args, flags } = this.parse(Create);
+    // Try to pull component metadata from user arguments
     let author = '';
     if (flags.author) {
       author = flags.author;
@@ -128,7 +133,11 @@ export default class Create extends Command {
     if (flags.createDate) {
       createDate = flags.createDate;
     } else {
-      createDate = (new Date()).toLocaleDateString();
+      // Use current date if none provided by user
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'];
+      const date = new Date();
+      createDate = `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
     }
 
     let email = '';
@@ -149,37 +158,25 @@ export default class Create extends Command {
       email = gitSettings.email;
     }
 
+    // Conveniently capitalize strings
     const capitalize = (s: string): string => {
       if (typeof s !== 'string') return '';
       return s.charAt(0).toUpperCase() + s.slice(1);
     }
-
+    // Format component name as lowercase, class case, and uppercase
     let name = <string>args.name;
     let Name = capitalize(name);
     let NAME = name.toUpperCase();
-
+    // Format view name as lowercase, class case, and uppercase
     let item = <string>args.view;
     let Item = capitalize(item);
     let ITEM = item.toUpperCase();
-
+    // Make view plural for list view
     let items = `${item}s`;
     let Items = `${Item}s`;
     let ITEMS = `${ITEM}S`;
-    return {
-      author,
-      createDate,
-      email,
-      item,
-      Item,
-      ITEM,
-      items,
-      Items,
-      ITEMS,
-      name,
-      Name,
-      NAME,
-      url,
-    }
+    return {author, createDate, email, item, Item, ITEM, items, Items, ITEMS,
+      name, Name, NAME, url,}
   }
 
   /**
