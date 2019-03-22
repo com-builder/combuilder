@@ -45,7 +45,7 @@
   "keywords": [
     "oclif"
   ],
-  "license": "LGPL",
+  "license": "LGPL-3.0",
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
