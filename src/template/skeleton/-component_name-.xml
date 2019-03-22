@@ -33,6 +33,7 @@
     <filename>{{name}}.php</filename>
     <filename>router.php</filename>
     <folder>controllers</folder>
+    <folder>helpers</folder>
     <folder>models</folder>
     <folder>views</folder>
   </files>
@@ -45,6 +46,7 @@
       <filename>index.html</filename>
       <filename>{{name}}.php</filename>
       <folder>controllers</folder>
+      <folder>helpers</folder>
       <folder>models</folder>
       <folder>sql</folder>
       <folder>tables</folder>
