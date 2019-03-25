@@ -176,7 +176,7 @@ export default class Create extends Command {
     let Items = `${Item}s`;
     let ITEMS = `${ITEM}S`;
     return {author, createDate, email, item, Item, ITEM, items, Items, ITEMS,
-      name, Name, NAME, url,};
+      name, Name, NAME, url};
   }
 
   /**
