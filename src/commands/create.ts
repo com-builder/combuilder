@@ -161,13 +161,14 @@ export default class Create extends Command {
     // Conveniently capitalize strings
     const capitalize = (s: string): string => {
       return s.charAt(0).toUpperCase() + s.slice(1);
-    }
+    };
+
     // Format component name as lowercase, class case, and uppercase
-    let name = <string>args.name;
+    let name = args.name as string;
     let Name = capitalize(name);
     let NAME = name.toUpperCase();
     // Format view name as lowercase, class case, and uppercase
-    let item = <string>args.view;
+    let item = args.view as string;
     let Item = capitalize(item);
     let ITEM = item.toUpperCase();
     // Make view plural for list view
@@ -175,7 +176,7 @@ export default class Create extends Command {
     let Items = `${Item}s`;
     let ITEMS = `${ITEM}S`;
     return {author, createDate, email, item, Item, ITEM, items, Items, ITEMS,
-      name, Name, NAME, url,}
+      name, Name, NAME, url,};
   }
 
   /**
