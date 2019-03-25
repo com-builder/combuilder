@@ -28,6 +28,13 @@ Commands
 * [`combuilder help [COMMAND]`](#joomlaly-help-command)
 
 # `combuilder create [name] [view]`
+
+The `create` command builds a Joomla component with the name provided and a
+list and item view based on the view name provided. Most options are used to
+manipulate component metadata, such as component author, email, URL, etc. The
+`-g` option pulls author name and email from your global git configuration. If
+any of these options aren't provided they are simply left blank.
+
 ```
 creates a Joomla component based on options provided
 
