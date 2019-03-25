@@ -280,12 +280,14 @@ export default class Create extends Command {
           let file = fs.readFileSync(nextPath, 'utf8');
           // Loop over replacement data in order to start find and replace
           for (let replacement in replacements) {
-            // Build expression for finding values that need replaced globally
-            // in file
-            const expr = new RegExp(`(\{\{${replacement}\}\})`, 'g');
-            if (expr.test(file)) {
-              // Replace every instance of found replacement
-              file = file.replace(expr, replacements[replacement]);
+            if (replacements.hasOwnProperty(replacement)) {
+              // Build expression for finding values that need replaced
+              // globally in file
+              const expr = new RegExp(`(\{\{${replacement}\}\})`, 'g');
+              if (expr.test(file)) {
+                // Replace every instance of found replacement
+                file = file.replace(expr, replacements[replacement]);
+              }
             }
           }
           // Rewrite newly modified with replacement data
