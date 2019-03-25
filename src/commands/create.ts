@@ -122,7 +122,7 @@ export default class Create extends Command {
    *                         replacement
    */
   protected createReplacementData(): Replacement {
-    const { args, flags } = this.parse(Create);
+    const {args, flags} = this.parse(Create);
     // Try to pull component metadata from user arguments
     let author = '';
     if (flags.author) {
@@ -194,7 +194,7 @@ export default class Create extends Command {
   }
 
   async run() {
-    const { args } = this.parse(Create);
+    const {args} = this.parse(Create);
     // Create component with com_ prefix
     const comName = `com_${args.name}`;
     // Create component directory
