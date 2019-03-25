@@ -27,6 +27,9 @@ Commands
 * [`combuilder create [NAME] [VIEW]`](#joomlaly-create-name-view)
 * [`combuilder help [COMMAND]`](#joomlaly-help-command)
 
+There is currently only a create command, for generating a basic
+Joomla component. More will be added in the future.
+
 # `combuilder create [name] [view]`
 
 The `create` command builds a Joomla component with the name provided and a
