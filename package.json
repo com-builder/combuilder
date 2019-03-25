@@ -1,12 +1,12 @@
 {
-  "name": "joomlafy",
+  "name": "combuilder",
   "description": "A CLI utility for generating Joomla components",
   "version": "0.0.0",
   "author": "Jeremy Jackson @jeremyvii",
   "bin": {
-    "joomlafy": "./bin/run"
+    "combuilder": "./bin/run"
   },
-  "bugs": "https://github.com/jeremyvii/joomlafy/issues",
+  "bugs": "https://github.com/jeremyvii/combuilder/issues",
   "dependencies": {
     "@oclif/command": "^1.5.8",
     "@oclif/config": "^1.12.0",
@@ -41,7 +41,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/jeremyvii/joomlafy",
+  "homepage": "https://github.com/jeremyvii/combuilder",
   "keywords": [
     "oclif"
   ],
@@ -49,12 +49,12 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "joomlafy",
+    "bin": "combuilder",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "jeremyvii/joomlafy",
+  "repository": "jeremyvii/combuilder",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "tslint -p test -t stylish",

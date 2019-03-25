@@ -1,38 +1,38 @@
-joomlafy
+combuilder
 =================
 
 A CLI utility for generating Joomla components
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/joomlafy.svg)](https://npmjs.org/package/joomlafy)
-[![Downloads/week](https://img.shields.io/npm/dw/joomlafy.svg)](https://npmjs.org/package/joomlafy)
-[![License](https://img.shields.io/npm/l/joomlafy.svg)](https://github.com/jeremyvii/joomlafy/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/combuilder.svg)](https://npmjs.org/package/combuilder)
+[![Downloads/week](https://img.shields.io/npm/dw/combuilder.svg)](https://npmjs.org/package/combuilder)
+[![License](https://img.shields.io/npm/l/combuilder.svg)](https://github.com/jeremyvii/combuilder/blob/master/package.json)
 
 Basic Usage
 ==================
 ```
 # Install via NPM
-$ npm install -g joomlafy
+$ npm install -g combuilder
 # Basic component creation. This component provides to the ablility to
 # auto-fill component metadata and file level block comments
-$ joomlafy create COMPONENTNAME VIEWNAME -g -u http://yoursite.com
+$ combuilder create COMPONENTNAME VIEWNAME -g -u http://yoursite.com
 > com_COMPONENTNAME successfully created
 $ joomlaly --help [COMMAND]
 > USAGE
-  $ joomlafy COMMAND
+  $ combuilder COMMAND
 ```
 
 Commands
 =================
-* [`joomlafy create [NAME] [VIEW]`](#joomlaly-create-name-view)
-* [`joomlafy help [COMMAND]`](#joomlaly-help-command)
+* [`combuilder create [NAME] [VIEW]`](#joomlaly-create-name-view)
+* [`combuilder help [COMMAND]`](#joomlaly-help-command)
 
-# `joomlafy create [name] [view]`
+# `combuilder create [name] [view]`
 ```
 creates a Joomla component based on options provided
 
 USAGE
-  $ joomlafy create NAME VIEW
+  $ combuilder create NAME VIEW
 
 ARGUMENTS
   NAME  name of the component you wish to create
@@ -47,6 +47,6 @@ OPTIONS
   -u, --url=url                url for component metadata
 
 EXAMPLE
-  $ joomlafy create NAME VIEW
+  $ combuilder create NAME VIEW
 ```
-# `joomlafy help [COMMAND]`
+# `combuilder help [COMMAND]`
