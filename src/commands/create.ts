@@ -8,21 +8,21 @@ import * as path from 'path';
  * User's name and email pull from git settings
  */
 interface GitSettings {
-  name: string,
-  email: string,
+  name: string;
+  email: string;
 }
 
 interface Placeholders {
-  [key: string]: string,
-};
+  [key: string]: string;
+}
 
 /**
  * What is returned by `git-config`
  */
 interface GitSync {
   user: {
-    [key: string]: string,
-  }
+    [key: string]: string;
+  };
 }
 
 /**
@@ -30,20 +30,20 @@ interface GitSync {
  * the replacement
  */
 interface Replacement {
-  [key: string]: string,
-  author: string,
-  createDate: string,
-  email: string,
-  item: string,
-  Item: string,
-  ITEM: string,
-  items: string,
-  Items: string,
-  ITEMS: string,
-  name: string,
-  Name: string,
-  NAME: string,
-  url: string,
+  [key: string]: string;
+  author: string;
+  createDate: string;
+  email: string;
+  item: string;
+  Item: string;
+  ITEM: string;
+  items: string;
+  Items: string;
+  ITEMS: string;
+  name: string;
+  Name: string;
+  NAME: string;
+  url: string;
 }
 
 export default class Create extends Command {
