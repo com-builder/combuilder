@@ -190,7 +190,7 @@ export default class Create extends Command {
     return {
       name: settings.user.name,
       email: settings.user.email,
-    }
+    };
   }
 
   async run() {
