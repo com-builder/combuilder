@@ -2,7 +2,7 @@
 <extension type='component' version='3.9' method='upgrade'>
   <name>COM_{{NAME}}</name>
   <description>COM_{{NAME}}_DESC</description>
-  <version>${CI_CUSTOM_VERSION}</version>
+  <version>0.0.0</version>
   <author>{{author}}</author>
   <authorEmail>{{email}}</authorEmail>
   <authorUrl>{{url}}</authorUrl>
