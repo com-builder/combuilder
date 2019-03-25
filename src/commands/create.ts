@@ -160,7 +160,6 @@ export default class Create extends Command {
 
     // Conveniently capitalize strings
     const capitalize = (s: string): string => {
-      if (typeof s !== 'string') return '';
       return s.charAt(0).toUpperCase() + s.slice(1);
     }
     // Format component name as lowercase, class case, and uppercase
