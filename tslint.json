@@ -1,6 +1,7 @@
 {
   "extends": "@oclif/tslint",
   "rules": {
-    "semicolon": [true, "alway"]
+    "semicolon": [true, "alway"],
+    "no-redundant-jsdoc": false
   }
 }
