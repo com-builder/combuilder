@@ -57,3 +57,5 @@ EXAMPLE
   $ combuilder create NAME VIEW
 ```
 # `combuilder help [COMMAND]`
+
+Displays a basic overview of the command requested.
