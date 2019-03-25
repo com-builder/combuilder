@@ -6,7 +6,7 @@
   "bin": {
     "combuilder": "./bin/run"
   },
-  "bugs": "https://github.com/jeremyvii/combuilder/issues",
+  "bugs": "https://github.com/com-builder/combuilder/issues",
   "dependencies": {
     "@oclif/command": "^1.5.8",
     "@oclif/config": "^1.12.0",
@@ -41,7 +41,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/jeremyvii/combuilder",
+  "homepage": "https://github.com/com-builder/combuilder",
   "keywords": [
     "oclif"
   ],
@@ -54,7 +54,7 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "jeremyvii/combuilder",
+  "repository": "com-builder/combuilder",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "tslint -p test -t stylish",
