@@ -2,6 +2,7 @@ import {Command, flags} from '@oclif/command';
 import * as fs from 'fs';
 import * as extra from 'fs-extra';
 import * as gitConfig from 'git-config';
+import * as path from 'path';
 
 /**
  * User's name and email pull from git settings
@@ -198,8 +199,11 @@ export default class Create extends Command {
     const comName = `com_${args.name}`;
     // Create component directory
     fs.mkdirSync(comName);
+    // Resolve path to this packages skeleton template directory
+    const skeleton = path.resolve(process.argv[1],
+      '../../src/template/skeleton');
     // Copy over template to new directory
-    extra.copySync(`${process.execPath}/src/template/skeleton`, comName);
+    extra.copySync(skeleton, comName);
     // Rename placeholder files in newly created component source
     this.renameFiles(comName, args.name, args.view);
     // Replace data if information provided via arguments
