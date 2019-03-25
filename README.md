@@ -16,7 +16,7 @@ $ npm install -g @combuilder/combuilder
 # auto-fill component metadata and file level block comments
 $ combuilder create COMPONENTNAME VIEWNAME -g -u http://yoursite.com
 > com_COMPONENTNAME successfully created
-$ joomlaly --help [COMMAND]
+$ combuilder --help [COMMAND]
 > USAGE
   $ combuilder COMMAND
 ```
