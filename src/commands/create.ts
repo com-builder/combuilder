@@ -60,7 +60,7 @@ export default class Create extends Command {
    * @var  {string[]}
    */
   static examples = [
-    `$ combuilder create NAME VIEW`,
+    '$ combuilder create NAME VIEW',
   ];
 
   static flags = {
