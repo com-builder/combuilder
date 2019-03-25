@@ -4,9 +4,9 @@ combuilder
 A CLI utility for generating Joomla components
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/combuilder.svg)](https://npmjs.org/package/@combuilder/combuilder)
-[![Downloads/week](https://img.shields.io/npm/dw/combuilder.svg)](https://npmjs.org/package/@combuilder/combuilder)
-[![License](https://img.shields.io/npm/l/combuilder.svg)](https://github.com/com-builder/combuilder/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@combuilder/combuilder.svg)](https://npmjs.org/package/@combuilder/combuilder)
+[![Downloads/week](https://img.shields.io/npm/dw/@combuilder/combuilder.svg)](https://npmjs.org/package/@combuilder/combuilder)
+[![License](https://img.shields.io/npm/l/@combuilder/combuilder.svg)](https://github.com/com-builder/combuilder/blob/master/package.json)
 
 Basic Usage
 ==================
