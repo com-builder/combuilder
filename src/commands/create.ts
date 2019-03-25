@@ -270,29 +270,31 @@ export default class Create extends Command {
     let replacements = this.createReplacementData();
 
     for (let item of items) {
-      // Build path to current item, if this is a directory it will be passed
-      // to next recursive call
-      let nextPath = `${path}/${item}`;
-      // Check if item is a file to determine file level find and replace is
-      // warranted
-      if (fs.lstatSync(nextPath).isFile()) {
-        let file = fs.readFileSync(nextPath, 'utf8');
-        // Loop over replacement data in order to start find and replace
-        for (let replacement in replacements) {
-          // Build expression for finding values that need replaced globally in
-          // file
-          const expr = new RegExp(`(\{\{${replacement}\}\})`, 'g');
-          if (expr.test(file)) {
-            // Replace every instance of found replacement
-            file = file.replace(expr, replacements[replacement]);
+      if (items.includes(item)) {
+        // Build path to current item, if this is a directory it will be passed
+        // to next recursive call
+        let nextPath = `${path}/${item}`;
+        // Check if item is a file to determine file level find and replace is
+        // warranted
+        if (fs.lstatSync(nextPath).isFile()) {
+          let file = fs.readFileSync(nextPath, 'utf8');
+          // Loop over replacement data in order to start find and replace
+          for (let replacement in replacements) {
+            // Build expression for finding values that need replaced globally
+            // in file
+            const expr = new RegExp(`(\{\{${replacement}\}\})`, 'g');
+            if (expr.test(file)) {
+              // Replace every instance of found replacement
+              file = file.replace(expr, replacements[replacement]);
+            }
           }
+          // Rewrite newly modified with replacement data
+          fs.writeFileSync(nextPath, file);
         }
-        // Rewrite newly modified with replacement data
-        fs.writeFileSync(nextPath, file);
-      }
-      // Check if item is a directory in order to start recursive actions
-      if (fs.lstatSync(nextPath).isDirectory()) {
-        this.replaceData(nextPath);
+        // Check if item is a directory in order to start recursive actions
+        if (fs.lstatSync(nextPath).isDirectory()) {
+          this.replaceData(nextPath);
+        }
       }
     }
   }
