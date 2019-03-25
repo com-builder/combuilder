@@ -1,3 +1,8 @@
+## 0.0.5 - March 25, 2019
+- Update readme with proper install instructions
+- Add contributing guide
+- Add issue templates
+
 ## 0.0.4 - March 25, 2019
 - Update readme
 
