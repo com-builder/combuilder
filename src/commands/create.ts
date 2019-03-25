@@ -146,7 +146,7 @@ export default class Create extends Command {
     }
 
     let url = '';
-    if  (flags.url) {
+    if (flags.url) {
       url = flags.url;
     }
 
