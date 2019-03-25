@@ -2,7 +2,6 @@ import {Command, flags} from '@oclif/command';
 import * as fs from 'fs';
 import * as extra from 'fs-extra';
 import * as gitConfig from 'git-config';
-import * as path from 'path';
 
 /**
  * User's name and email pull from git settings
