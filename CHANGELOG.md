@@ -1,3 +1,6 @@
+## 0.0.4 - March 25, 2019
+- Update readme
+
 ## 0.0.3 - March 25, 2019
 - Restructure project to always include templates
 
