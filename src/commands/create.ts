@@ -115,6 +115,25 @@ export default class Create extends Command {
     }
   ];
 
+  async run() {
+    const {args} = this.parse(Create);
+    // Create component with com_ prefix
+    const comName = `com_${args.name}`;
+    // Create component directory
+    fs.mkdirSync(comName);
+    // Resolve path to this packages skeleton template directory
+    const skeleton = path.resolve(__dirname, '../../templates/skeleton');
+    // Copy over template to new directory
+    extra.copySync(skeleton, comName);
+    // Rename placeholder files in newly created component source
+    this.renameFiles(comName, args.name, args.view);
+    // Replace data if information provided via arguments
+    // (@see this.createReplacementData())
+    this.replaceData(comName);
+
+    this.log(`${comName} successfully created`);
+  }
+
   /**
    * Create object replacement data based on CLI arguments
    *
@@ -191,25 +210,6 @@ export default class Create extends Command {
       name: settings.user.name,
       email: settings.user.email,
     };
-  }
-
-  async run() {
-    const {args} = this.parse(Create);
-    // Create component with com_ prefix
-    const comName = `com_${args.name}`;
-    // Create component directory
-    fs.mkdirSync(comName);
-    // Resolve path to this packages skeleton template directory
-    const skeleton = path.resolve(__dirname, '../../templates/skeleton');
-    // Copy over template to new directory
-    extra.copySync(skeleton, comName);
-    // Rename placeholder files in newly created component source
-    this.renameFiles(comName, args.name, args.view);
-    // Replace data if information provided via arguments
-    // (@see this.createReplacementData())
-    this.replaceData(comName);
-
-    this.log(`${comName} successfully created`);
   }
 
   /**
