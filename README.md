@@ -11,7 +11,7 @@ Basic Usage
 ==================
 ```
 # Install via NPM
-$ npm install -g combuilder
+$ npm install -g @combuilder/combuilder
 # Basic component creation. This component provides to the ablility to
 # auto-fill component metadata and file level block comments
 $ combuilder create COMPONENTNAME VIEWNAME -g -u http://yoursite.com
