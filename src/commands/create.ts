@@ -186,7 +186,7 @@ export default class Create extends Command {
    *                         settings
    */
   protected getGitSettings(): GitSettings {
-    const settings = <GitSync>gitConfig.sync();
+    const settings = gitConfig.sync() as GitSync;
     return {
       name: settings.user.name,
       email: settings.user.email,
