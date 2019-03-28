@@ -3,9 +3,9 @@
  * This file contains the layout and supporting logic for the component's
  * "{{Item}}s" view and is used exclusively by the `View{{Item}}s` class.
  *
- * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
- * @license        GNU General Public License v3 (GPL-3.0).
+ * @author     {{author}} <{{email}}>
+ * @copyright  2018 {{author}}. All rights reserved.
+ * @license    GNU General Public License v3 (GPL-3.0).
  */
 
 // Prevent direct access to this file according to Joomla! best practices
@@ -19,7 +19,7 @@ use Joomla\CMS\Language\Text;
 
 // Fetch and escape the ordering column and direction
 $listOrder = $this->escape($this->filterOrder);
-$listDir     = $this->escape($this->filterOrderDir);
+$listDir = $this->escape($this->filterOrderDir);
 
 /**
  * Prepare the toolbar for use in this view using an IIFE.
@@ -27,10 +27,11 @@ $listDir     = $this->escape($this->filterOrderDir);
  * This function adds "New", "Publish", "Unpublish", "Check-in" and "Trash" (or
  * "Delete") buttons to the toolbar and sets the page title.
  */
-(function($view) {
+(function($view)
+{
     // Fetch applicable language translations for the toolbar configuration
     $deleteMsg = Text::_('COM_{{NAME}}_VIEW_{{ITEM}}S_DELETE_CONFIRM');
-    $title         = Text::_('COM_{{NAME}}_VIEW_{{ITEM}}S_READ');
+    $title = Text::_('COM_{{NAME}}_VIEW_{{ITEM}}S_READ');
     // Add a "New" button to create a new "{{Item}}"
     Toolbar::addNew('{{item}}.add');
     // Add a "Publish" button to publish one or more "{{Item}}"
@@ -40,10 +41,13 @@ $listDir     = $this->escape($this->filterOrderDir);
     // Add an "Check-in" button to unpublish one or more "{{Item}}"
     Toolbar::checkin('{{item}}s.checkin');
     // Determine whether the trash or delete button should be shown
-    if (intval($view->activeFilters['published'] ?? '') !== -2) {
+    if (intval($view->activeFilters['published'] ?? '') !== -2)
+    {
         // Add a "Trash" button to move one or more "{{Item}}" to the trash
         Toolbar::trash('{{item}}s.trash');
-    } else {
+    }
+    else
+    {
         // Add a "Delete" button to delete one or more "{{Item}}"
         Toolbar::deleteList($deleteMsg, '{{item}}s.delete');
     }
@@ -71,12 +75,10 @@ $listDir     = $this->escape($this->filterOrderDir);
                             <?= $this->escape(Text::_('COM_{{NAME}}_{{ITEM}}_COL_PUBLISHED')) ?>
                         </th>
                         <th>
-                            <?= HTML::_('grid.sort', 'COM_{{NAME}}_{{ITEM}}_COL_NAME',
-                                '{{item}}s.name', $listDir, $listOrder) ?>
+                            <?= HTML::_('grid.sort', 'COM_{{NAME}}_{{ITEM}}_COL_NAME', '{{item}}s.name', $listDir, $listOrder) ?>
                         </th>
                         <th width='16%' style='text-align: right;'>
-                            <?= HTML::_('grid.sort', 'COM_{{NAME}}_{{ITEM}}_COL_ID',
-                                '{{item}}s.id', $listDir, $listOrder) ?>
+                            <?= HTML::_('grid.sort', 'COM_{{NAME}}_{{ITEM}}_COL_ID', '{{item}}s.id', $listDir, $listOrder) ?>
                         </th>
                     </tr>
                 </thead>
@@ -89,14 +91,11 @@ $listDir     = $this->escape($this->filterOrderDir);
                                 <?= HTML::_('grid.id', $i, $row->id) ?>
                             </td>
                             <td style='text-align: right;'>
-                                <?= HTML::_('jgrid.published', $row->published, $i,
-                                                        '{{item}}s.', TRUE, 'cb') ?>
+                                <?= HTML::_('jgrid.published', $row->published, $i, '{{item}}s.', TRUE, 'cb') ?>
                             </td>
                             <td>
                                 <?php if ($row->checkedOut > 0) { ?>
-                                    <?= HTML::_('jgrid.checkedout', $i, $row->editor,
-                                                            $row->checkedOutTime, '{{item}}s.',
-                                                            $userID === $row->checkedOut) ?>
+                                    <?= HTML::_('jgrid.checkedout', $i, $row->editor, $row->checkedOutTime, '{{item}}s.', $userID === $row->checkedOut) ?>
                                 <?php } ?>
                                 <a href="<?= $this->get{{Item}}UpdateLink($row) ?>">
                                     <?= $this->escape($row->name) ?>

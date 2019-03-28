@@ -2,9 +2,9 @@
 /**
  * This file serves as the component's logical entrypoint for execution.
  *
- * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
- * @license        GNU General Public License v3 (GPL-3.0).
+ * @author     {{author}} <{{email}}>
+ * @copyright  2018 {{author}}. All rights reserved.
+ * @license    GNU General Public License v3 (GPL-3.0).
  */
 
 use Joomla\CMS\Factory;
@@ -22,7 +22,8 @@ use Joomla\CMS\MVC\Controller\BaseController;
  * @throws    \Exception    If the controller couldn't be loaded.
  * @throws    \Exception    If the task couldn't be found.
  */
-(function() {
+(function()
+{
     // Fetch the client's desired class task from its request input
     $input = Factory::getApplication()->input;
     // Fetch an instance of the appropriate `BaseController` child class

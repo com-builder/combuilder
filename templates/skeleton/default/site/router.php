@@ -2,9 +2,9 @@
 /**
  * This file serves as the component's router for Joomla's SEF URLs.
  *
- * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
- * @license        GNU General Public License v3 (GPL-3.0).
+ * @author     {{author}} <{{email}}>
+ * @copyright  2018 {{author}}. All rights reserved.
+ * @license    GNU General Public License v3 (GPL-3.0).
  */
 
 use Joomla\CMS\Component\Router\RouterBase;
@@ -19,7 +19,8 @@ use Joomla\CMS\Menu\MenuItem;
  * @see    {{Name}}Router::build()    To see how SEF URLs are generated.
  * @see    {{Name}}Router::parse()    To see how SEF URLs are processed.
  */
-class {{Name}}Router extends RouterBase {
+class {{Name}}Router extends RouterBase
+{
     /**
      * A regular sub-expression that represents a valid PHP identifier name.
      *
@@ -43,16 +44,18 @@ class {{Name}}Router extends RouterBase {
      * @return    array                                         An array of Joomla! SEF URL segments to
      *                                                                        represent the resulting route.
      */
-    public function build(&$query): array {
+    public function build(&$query): array
+    {
         // Extract all pertinent information from the query parameter list
-        $id     = filter_var($query['id']         ?? NULL, FILTER_VALIDATE_INT) ?: NULL;
-        $mid    = filter_var($query['Itemid'] ?? NULL, FILTER_VALIDATE_INT) ?: NULL;
-        $task =         strval($query['task']     ?? NULL) ?: NULL;
-        $view =         strval($query['view']     ?? NULL) ?: NULL;
+        $id   = filter_var($query['id'] ?? NULL, FILTER_VALIDATE_INT) ?: NULL;
+        $mid  = filter_var($query['Itemid'] ?? NULL, FILTER_VALIDATE_INT) ?: NULL;
+        $task = strval($query['task'] ?? NULL) ?: NULL;
+        $view = strval($query['view'] ?? NULL) ?: NULL;
         // Determine which menu item best fits this route
         $item = $this->buildGetMenuItem($mid, $view, $id);
         // Check whether a valid menu item was returned
-        if ($item !== NULL) {
+        if ($item !== NULL)
+        {
             // Replace the current working menu item in the query parameter list
             $query['Itemid'] = $item->id ?? $query['Itemid'];
             // Initialize an array to hold each SEF URL segment 'id', 'task'
@@ -103,8 +106,9 @@ class {{Name}}Router extends RouterBase {
      * @return    ?MenuItem                         The best-fit menu item for the provided
      *                                                                parameters to be used for route building.
      */
-    protected function buildGetMenuItem(?int $ancestor,
-            ?string $view, ?int $id): ?MenuItem {
+    protected function buildGetMenuItem(?int $ancestor, string $view,
+        ?int $id): ?MenuItem
+    {
         // Fetch either an array of menu items or a single menu item
         $items = $this->menu->getItems([], []);
         // Make sure that `$items` is always an `array`, even with only one entry
@@ -115,15 +119,16 @@ class {{Name}}Router extends RouterBase {
             $item->related = $item->id != $ancestor &&
                 in_array($ancestor, $item->tree);
             // Determine whether this menu item matches the item ID
-            $item->exact = is_numeric($item->query['id']     ?? NULL) &&
-                                                 intval($item->query['id']) === $id;
+            $item->exact = is_numeric($item->query['id'] ?? NULL) && intval($item->query['id']) === $id;
             // Replace the original menu item with a decorated menu item
             return $item;
-        }, array_filter($items, function(MenuItem $item) use ($id, $view) {
+        }, array_filter($items, function(MenuItem $item) use ($id, $view)
+        {
             // Ensure that this menu item has a valid default query parameter list
-            if (property_exists($item, 'query') && is_array($item->query)) {
+            if (property_exists($item, 'query') && is_array($item->query))
+            {
                 // Check the validity of the menu item's 'id' query parameter
-                $hasID    = is_numeric($item->query['id'] ?? NULL);
+                $hasID = is_numeric($item->query['id'] ?? NULL);
                 $sameID = $hasID ? intval($item->query['id']) === $id : FALSE;
                 // Check whether this menu item's 'view' query parameter matches
                 $sameView = ($item->query['view'] ?? FALSE) === $view;
@@ -134,11 +139,12 @@ class {{Name}}Router extends RouterBase {
             return FALSE;
         }));
         // Sort the array of menu items by their level, ancestry, and exact ID match
-        usort($items, function(MenuItem $left, MenuItem $right) {
+        usort($items, function(MenuItem $left, MenuItem $right)
+        {
             // Calculate our sorting metrics in preferential order
-            $exact     = $right->exact     <=> $left->exact;
+            $exact = $right->exact <=> $left->exact;
             $related = $right->related <=> $left->related;
-            $level     =    $left->level     <=> $right->level;
+            $level = $left->level <=> $right->level;
             // Return the comparative value of these two menu items
             return $exact === 0 ? ($related === 0 ? $level : $related) : $exact;
         });
@@ -159,7 +165,8 @@ class {{Name}}Router extends RouterBase {
      *
      * @return    ?string                        The name of the method to use.
      */
-    protected function buildGetMethod(?string $task): ?string {
+    protected function buildGetMethod(?string $task): ?string
+    {
         // Offload the method name extraction of the task string
         $method = $this->getMethod($task);
         // If the resulting method name is a non-default identifier then return it
@@ -178,7 +185,8 @@ class {{Name}}Router extends RouterBase {
      *
      * @return    ?string                 The name of the method to use.
      */
-    protected function getMethod(?string $task): ?string {
+    protected function getMethod(?string $task): ?string
+    {
         // Fetch the lowercase method name from the provided task
         $method = strtolower(ltrim(strstr($task ?? '', '.') ?: ($task ?? ''), '.'));
         // Default the method to 'display' if one could not be found
@@ -195,7 +203,8 @@ class {{Name}}Router extends RouterBase {
      * @return    bool                         `TRUE`    if `$input` is a possible identifier,
      *                                                     `FALSE` otherwise.
      */
-    protected function isIdent(?string $input): bool {
+    protected function isIdent(?string $input): bool
+    {
         // A PHP identifier is a letter or underscore followed by any length of
         // numbers, letters or underscores
         return preg_match('/^'.$this->identExpr.'$/i', $input ?? '') === 1;
@@ -209,9 +218,11 @@ class {{Name}}Router extends RouterBase {
      *
      * @return    ?array    A query parameter list on success, `NULL` on failure.
      */
-    protected function menuItemGetQuery(): ?array {
+    protected function menuItemGetQuery(): ?array
+    {
         // Check whether the current menu is assigned as an instance property
-        if (isset($this->menu)) {
+        if (isset($this->menu))
+        {
             // Fetch the current working menu item
             $item = $this->menu->getActive();
             // Check whether the resulting menu item contains a query parameter list
@@ -244,11 +255,13 @@ class {{Name}}Router extends RouterBase {
      *
      * @return    array                         An array of input parameters.
      */
-    public function parse(&$segments): array {
+    public function parse(&$segments): array
+    {
         // Fetch the active menu item's default query parameter list
         $query = $this->menuItemGetQuery() ?? [];
         // Check whether a valid default view name is available for this menu item
-        if (array_key_exists('view', $query) && $this->isIdent($query['view'])) {
+        if (array_key_exists('view', $query) && $this->isIdent($query['view']))
+        {
             // Process the segment list into an array of provisional query parameters
             $result = $this->parseGetQuery($segments);
             // Override the item ID segment from the SEF URL using the menu item
@@ -283,7 +296,8 @@ class {{Name}}Router extends RouterBase {
      *
      * @return    array                         A list of provisional query parameters.
      */
-    protected function parseGetQuery(array $segments): array {
+    protected function parseGetQuery(array $segments): array
+    {
         // Define a regular expression used to parse the SEF URL
         $expr = '/^(?P<id>\\d+)?(?:(?:^|\\/)(?P<method>'.$this->identExpr.'))?$/i';
         // Attempt to match the provided segments using `preg_match()`
@@ -311,8 +325,8 @@ class {{Name}}Router extends RouterBase {
      *
      * @return    ?string                     A Joomla!-standard task string.
      */
-    protected function parseGetTask(string $view,
-            ?string $method, ?string $task) : ?string {
+    protected function parseGetTask(string $view, ?string $method, ?string $task) : ?string
+    {
         // Determine which method name should be used in the resulting task string
         $name = ($method ?: $this->getMethod($task)) ?: 'display';
         // Concatenate the view name with the requested/default method name

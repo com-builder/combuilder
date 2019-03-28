@@ -2,9 +2,9 @@
 <!--
  ! This file represents the form structure for creating or updating a "{{Item}}".
  !
- ! @author         {{author}} <{{email}}>
- ! @copyright    2018 {{author}}. All rights reserved.
- ! @license        GNU General Public License v3 (GPL-3.0).
+ ! @author     {{author}} <{{email}}>
+ ! @copyright  2018 {{author}}. All rights reserved.
+ ! @license    GNU General Public License v3 (GPL-3.0).
  !-->
 <form>
     <fieldset name='default'>

@@ -7,9 +7,9 @@ use Joomla\CMS\Language\Text;
 /**
  * This file serves as the component's helper for common functionality.
  *
- * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
- * @license        GNU General Public License v3 (GPL-3.0).
+ * @author     {{author}} <{{email}}>
+ * @copyright  2018 {{author}}. All rights reserved.
+ * @license    GNU General Public License v3 (GPL-3.0).
  */
 
 // No direct access to this file
@@ -18,21 +18,20 @@ defined('_JEXEC') or die('Restricted access');
 /**
  * {{Name}}component helper.
  */
-abstract class {{Name}}Helper extends ContentHelper {
+abstract class {{Name}}Helper extends ContentHelper
+{
 
 	/**
 	 * Configure the Sidebar Menu.
 	 *
-	 * @param string    $submenu    The name of the active view
+	 * @param   string  $submenu  The name of the active view
 	 *
-	 * @return boid
+	 * @return  boid
 	 */
 
-	public static function addSubmenu($submenu) {
-		HTML::_('sidebar.addEntry',
-	    	Text::_('COM_{{NAME}}_SUBMENU_{{ITEM}}S'),
-			'index.php?option=com_{{name}}&view={{item}}s',
-			$submenu == '{{item}}s'
-		);
+	public static function addSubmenu($submenu)
+	{
+		HTML::_('sidebar.addEntry',	Text::_('COM_{{NAME}}_SUBMENU_{{ITEM}}S'),
+			'index.php?option=com_{{name}}&view={{item}}s',	$submenu == '{{item}}s');
 	}
 }

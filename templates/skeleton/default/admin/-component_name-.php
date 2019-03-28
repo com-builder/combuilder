@@ -2,9 +2,9 @@
 /**
  * This file serves as the component's logical entrypoint for execution.
  *
- * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
- * @license        GNU General Public License v3 (GPL-3.0).
+ * @author     {{author}} <{{email}}>
+ * @copyright  2018 {{author}}. All rights reserved.
+ * @license    GNU General Public License v3 (GPL-3.0).
  */
 
 use Joomla\CMS\Factory;
@@ -22,21 +22,24 @@ use Joomla\CMS\MVC\Controller\BaseController;
  * @throws    \Exception    If the controller couldn't be loaded.
  * @throws    \Exception    If the task couldn't be found.
  */
-(function() {
+(function()
+{
     // Require the helper
     require_once JPATH_COMPONENT_ADMINISTRATOR . '/helpers/{{name}}.php';
     // Fetch the client's desired class task from its request input
     $input = Factory::getApplication()->input;
     // Check whether a view was supplied in the application input parameters
-    if ($input->get('view', FALSE) === FALSE) {
-        // Supply a default view to absolve this extension of requiring a generic
-        // controller class
+    if ($input->get('view', FALSE) === FALSE)
+    {
+        // Supply a default view to absolve this extension of requiring a
+        // generic controller class
         $input->set('view', '{{item}}s');
     }
     // Check whether a task was supplied in the application input parameters
-    if ($input->get('task', FALSE) === FALSE) {
-        // Supply a default task of `$view`.display to absolve this extension of
-        // requiring a generic controller class
+    if ($input->get('task', FALSE) === FALSE)
+    {
+        // Supply a default task of `$view`.display to absolve this extension
+        // of requiring a generic controller class
         $input->set('task', $input->get('view').'.display');
     }
     // Fetch an instance of the appropriate `BaseController` child class

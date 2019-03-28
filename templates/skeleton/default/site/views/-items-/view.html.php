@@ -1,11 +1,11 @@
 <?php declare(strict_types = 1);
 /**
- * This file represents the "{{Item}}s" presentation layer and is responsible for
- * handling the display of and interaction with data.
+ * This file represents the "{{Item}}s" presentation layer and is responsible
+ * for handling the display of and interaction with data.
  *
- * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
- * @license        GNU General Public License v3 (GPL-3.0).
+ * @author     {{author}} <{{email}}>
+ * @copyright  2018 {{author}}. All rights reserved.
+ * @license    GNU General Public License v3 (GPL-3.0).
  */
 
 // namespace Joomla\Component\{{Name}}\Site\View\{{Item}}s;
@@ -19,7 +19,8 @@ use Joomla\CMS\Uri\Uri as URI;
 /**
  * The "{{Item}}s" view is a list of "{{Item}}" records from the database.
  */
-class {{Name}}View{{Item}}s extends BaseView {
+class {{Name}}View{{Item}}s extends BaseView
+{
     /**
      * A possibly-filtered result set of "{{Item}}" objects from the database.
      *
@@ -47,17 +48,19 @@ class {{Name}}View{{Item}}s extends BaseView {
     /**
      * This method prepares the class instance to render a template layout.
      *
-     * @param     string            $template    Which template should be loaded to render.
+     * @param     string      $template  Which template should be loaded to
+     *                                   render.
      *
-     * @throws    \Exception                         On error from the model.
+     * @throws    \Exception             On error from the model.
      *
-     * @return    mixed                                    `string` containing the rendered template
-     *                                                                 on success, otherwise an `object` or `bool`
-     *                                                                 on failure.
+     * @return    mixed                  `string` containing the rendered
+     *                                   template on success, otherwise an
+     *                                   `object` or `bool` on failure.
      */
-    public function display($template = NULL) {
+    public function display($template = NULL)
+    {
         // Fetch the "{{Item}}s" and pagination state from the database
-        $this->{{item}}s            = $this->get('Items');
+        $this->{{item}}s = $this->get('Items');
         $this->pagination = $this->get('Pagination');
         // Fetch references to Joomla's application and document object instances
         $app = Factory::getApplication();
@@ -74,13 +77,15 @@ class {{Name}}View{{Item}}s extends BaseView {
     /**
      * Fetches a link to view a single "{{Item}}" record.
      *
-     * @param     object    $row    An object (usually from the database) containing an
-     *                                                identification number (`id`) and name (`name`).
+     * @param     object    $row    An object (usually from the database)
+     *                              containing an identification number (`id`)
+     *                              and name (`name`).
      *
-     * @return    string                A fully rendered anchor tag for direct placement in
-     *                                                a template.
+     * @return    string            A fully rendered anchor tag for direct
+     *                              placement in a template.
      */
-    protected function get{{Item}}ViewLink(object $row): string {
+    protected function get{{Item}}ViewLink(object $row): string
+    {
         return Route::_('index.php?'.URI::buildQuery([
             'id'         => intval($row->id),
             'option' => 'com_{{name}}',

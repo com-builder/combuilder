@@ -3,9 +3,9 @@
  * This file contains the layout and supporting logic for the component's
  * "Item" view and is used exclusively by the `ViewItem` class.
  *
- * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
- * @license        GNU General Public License v3 (GPL-3.0).
+ * @author     {{author}} <{{email}}>
+ * @copyright  2018 {{author}}. All rights reserved.
+ * @license    GNU General Public License v3 (GPL-3.0).
  */
 
 // Prevent direct access to this file according to Joomla! best practices

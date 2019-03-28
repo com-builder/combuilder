@@ -3,9 +3,9 @@
  * This file contains the layout and supporting logic for the component's
  * "{{Item}}" view and is used exclusively by the `View{{Item}}` class.
  *
- * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
- * @license        GNU General Public License v3 (GPL-3.0).
+ * @author     {{author}} <{{email}}>
+ * @copyright  2018 {{author}}. All rights reserved.
+ * @license    GNU General Public License v3 (GPL-3.0).
  */
 
 // Prevent direct access to this file according to Joomla! best practices
@@ -20,7 +20,8 @@ use Joomla\CMS\Language\Text;
  *
  * This function adds a "Cancel" button to the toolbar and sets the page title.
  */
-(function() {
+(function()
+{
     // Add a "Cancel" button to exit the new "{{Item}}" page
     Toolbar::cancel('{{item}}.cancel');
     // Set the title of the new "{{Item}}" page

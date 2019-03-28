@@ -2,9 +2,9 @@
 /**
  * This file represents the "{{Item}}s" table instance.
  *
- * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
- * @license        GNU General Public License v3 (GPL-3.0).
+ * @author     {{author}} <{{email}}>
+ * @copyright  2018 {{author}}. All rights reserved.
+ * @license    GNU General Public License v3 (GPL-3.0).
  */
 
 // namespace Joomla\Component\{{Name}}\Administrator\Table;
@@ -14,7 +14,8 @@ use Joomla\CMS\Table\Table;
 /**
  * This class represents the "{{Item}}s" table in the database.
  */
-class {{Name}}Table{{Item}}s extends Table {
+class {{Name}}Table{{Item}}s extends Table
+{
     /**
      * Supplement the default constructor to configure the database table.
      *
@@ -24,7 +25,8 @@ class {{Name}}Table{{Item}}s extends Table {
      * @param    \JDatabaseDriver    $db    The database object instance to use for
      *                                                                the table.
      */
-    public function __construct(&$db) {
+    public function __construct(&$db)
+    {
         parent::__construct('#__{{name}}_{{item}}s', 'id', $db);
     }
 }

@@ -3,9 +3,9 @@
  * This file represents the "{{Item}}" presentation layer and is responsible for
  * handling the display of and interaction with data.
  *
- * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
- * @license        GNU General Public License v3 (GPL-3.0).
+ * @author     {{author}} <{{email}}>
+ * @copyright  2018 {{author}}. All rights reserved.
+ * @license    GNU General Public License v3 (GPL-3.0).
  */
 
 // namespace Joomla\Component\{{Name}}\Administrator\View\{{Item}};
@@ -17,7 +17,8 @@ use Joomla\CMS\MVC\View\HtmlView as BaseView;
 /**
  * The "{{Item}}" view is for a specific record from the database.
  */
-class {{Name}}View{{Item}} extends BaseView {
+class {{Name}}View{{Item}} extends BaseView
+{
     /**
      * An object representing a "{{Item}}" record from the database.
      *
@@ -37,7 +38,8 @@ class {{Name}}View{{Item}} extends BaseView {
      *
      * A "Save & Close", "Save" and "Save & New" button are added.
      */
-    protected function addToolbarSaveButtons() {
+    protected function addToolbarSaveButtons()
+    {
         // Add the applicable save buttons to the toolbar
         Toolbar::apply('{{item}}.apply');
         Toolbar::save('{{item}}.save');
@@ -49,15 +51,17 @@ class {{Name}}View{{Item}} extends BaseView {
      *
      * This method will hide Joomla's main menu while modifying an object.
      *
-     * @param     string            $template    Which template should be loaded to render.
+     * @param     string      $template  Which template should be loaded to
+     *                                   render.
      *
-     * @throws    \Exception                         On error from the model.
+     * @throws    \Exception             On error from the model.
      *
-     * @return    mixed                                    `string` containing the rendered template
-     *                                                                 on success, otherwise an `object` or `bool`
-     *                                                                 on failure.
+     * @return    mixed                  `string` containing the rendered
+     *                                   template on success, otherwise an
+     *                                   `object` or `bool` on failure.
      */
-    public function display($template = NULL) {
+    public function display($template = NULL)
+    {
         // Fetch the requested "{{Item}}" by the provided ID
         $this->form = $this->get('Form');
         $this->{{item}} = $this->get('Item');
