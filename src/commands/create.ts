@@ -205,7 +205,7 @@ export default class Create extends Command {
     // Create component directory
     fs.mkdirSync(comName);
     // Resolve path to this packages skeleton template directory
-    const skeleton = path.resolve(__dirname, '../../templates/skeleton');
+    const skeleton = path.resolve(__dirname, '../../templates/skeleton/default');
     // Copy over template to new directory
     extra.copySync(skeleton, comName);
     // Rename placeholder files in newly created component source
