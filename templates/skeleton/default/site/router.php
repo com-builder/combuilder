@@ -35,14 +35,14 @@ class {{Name}}Router extends RouterBase
      * efficient (and often the most elegant) route. Menu items that are
      * descendants of the active menu item are preferred over other routes.
      *
-     * @see         self::buildGetMenuItem()    For more information regarding the
-     *                                                                        selection of a "best-fit" menu item.
+     * @see self::buildGetMenuItem()  For more information regarding the
+     *                                selection of a "best-fit" menu item.
      *
-     * @param     array                         $query    An array of query parameters for which
-     *                                                                        to build a route.
+     * @param   array  $query  An array of query parameters for which to build
+     *                         a route.
      *
-     * @return    array                                         An array of Joomla! SEF URL segments to
-     *                                                                        represent the resulting route.
+     * @return  array          An array of Joomla! SEF URL segments to
+     *                         represent the resulting route.
      */
     public function build(&$query): array
     {
@@ -96,15 +96,15 @@ class {{Name}}Router extends RouterBase
      * Once the priority queue has been built, the first entry is removed from the
      * queue and returned as the best-fit menu item for the provided parameters.
      *
-     * @param     ?int             $ancestor    The desired common ancestor used to
-     *                                                                determine descendant status.
-     * @param     ?string        $view            The view name that each menu item must
-     *                                                                reference to be applicable.
-     * @param     ?int             $id                An optional item identification number used
-     *                                                                to find an exact menu item match.
+     * @param   ?int     $ancestor  The desired common ancestor used to
+     *                              determine descendant status.
+     * @param   ?string  $view      The view name that each menu item must
+     *                              reference to be applicable.
+     * @param   ?int     $id        An optional item identification number used
+     *                              to find an exact menu item match.
      *
-     * @return    ?MenuItem                         The best-fit menu item for the provided
-     *                                                                parameters to be used for route building.
+     * @return  ?MenuItem           The best-fit menu item for the provided
+     *                              parameters to be used for route building.
      */
     protected function buildGetMenuItem(?int $ancestor, string $view,
         ?int $id): ?MenuItem
@@ -158,18 +158,19 @@ class {{Name}}Router extends RouterBase
      * This method returns the method name from the task string if it is
      * non-default (i.e. not equal to 'display'). Otherwise, `NULL` is returned.
      *
-     * @see         self::getMethod()    For more information about the method name
-     *                                                         extraction process.
+     * @see  self::getMethod()  For more information about the method name
+     *                          extraction process.
      *
-     * @param     ?string         $task    A user-provided task query parameter.
+     * @param   ?string  $task  A user-provided task query parameter.
      *
-     * @return    ?string                        The name of the method to use.
+     * @return  ?string         The name of the method to use.
      */
     protected function buildGetMethod(?string $task): ?string
     {
         // Offload the method name extraction of the task string
         $method = $this->getMethod($task);
-        // If the resulting method name is a non-default identifier then return it
+        // If the resulting method name is a non-default identifier then return
+        // it
         return $method !== 'display' ? $method : NULL;
     }
 
@@ -191,17 +192,18 @@ class {{Name}}Router extends RouterBase
         $method = strtolower(ltrim(strstr($task ?? '', '.') ?: ($task ?? ''), '.'));
         // Default the method to 'display' if one could not be found
         $method = $method ?: 'display';
-        // If the resulting method name is a non-default identifier then return it
+        // If the resulting method name is a non-default identifier then return
+        // it
         return $this->isIdent($method) ? $method : NULL;
     }
 
     /**
      * Determines whether a string could represent a PHP identifier name.
      *
-     * @param     ?string    $input    An arbitrary string.
+     * @param   ?string  $input  An arbitrary string.
      *
-     * @return    bool                         `TRUE`    if `$input` is a possible identifier,
-     *                                                     `FALSE` otherwise.
+     * @return  bool             `TRUE` if `$input` is a possible identifier,
+     *                           `FALSE` otherwise.
      */
     protected function isIdent(?string $input): bool
     {
@@ -225,10 +227,11 @@ class {{Name}}Router extends RouterBase
         {
             // Fetch the current working menu item
             $item = $this->menu->getActive();
-            // Check whether the resulting menu item contains a query parameter list
+            // Check whether the resulting menu item contains a query parameter
+            // list
             if (is_object($item) && property_exists($item, 'query')) {
-                // Return the resulting query parameter list for the menu item or `NULL`
-                // if the `query` property is not an array
+                // Return the resulting query parameter list for the menu item
+                // or `NULL` if the `query` property is not an array
                 return is_array($item->query) ? $item->query : NULL;
             }
         }
@@ -239,17 +242,19 @@ class {{Name}}Router extends RouterBase
     /**
      * Parse a Joomla! SEF URL and convert it into input parameters.
      *
-     * The active menu item is used to define the 'view' query parameter used for
-     * selecting a controller/model/view triad group to satisfy the request.
+     * The active menu item is used to define the 'view' query parameter used
+     * for selecting a controller/model/view triad group to satisfy the request.
      *
      * Optional parameters can be provided via the SEF URL. The first optional
      * parameter represents the 'id' query parameter and can be any 32-bit
-     * unsigned integer. The last optional parameter represents the method used to
-     * construct the 'task' query parameter and can be any valid PHP identifier.
+     * unsigned integer. The last optional parameter represents the method used
+     * to construct the 'task' query parameter and can be any valid PHP
+     * identifier.
      *
      * The 'task' query parameter is always constructed using the 'view' query
-     * parameter and the provided method name (which defaults to 'display' if none
-     * is provided). This is to disallow deviation from the class triad group.
+     * parameter and the provided method name (which defaults to 'display' if
+     * none is provided). This is to disallow deviation from the class triad
+     * group.
      *
      * @param     array    $segments    An array of Joomla! SEF URL segments.
      *
@@ -289,12 +294,13 @@ class {{Name}}Router extends RouterBase
      * 'id' holds a `?string`-typed value representing an unsigned integer value.
      * 'method' holds a `?string`-typed value representing a method name.
      *
-     * @see         self::$identExpr    The regular sub-expression used to match a PHP
-     *                                                        identifier name.
+     * @see  self::$identExpr  The regular sub-expression used to match a PHP
+     *                         identifier name.
      *
-     * @param     array    $segments    An array of SEF URL segments provided by Joomla!
+     * @param   array  $segments  An array of SEF URL segments provided by
+     *                            Joomla!
      *
-     * @return    array                         A list of provisional query parameters.
+     * @return  array             A list of provisional query parameters.
      */
     protected function parseGetQuery(array $segments): array
     {
@@ -314,16 +320,16 @@ class {{Name}}Router extends RouterBase
      * The method name is used as-is if not `NULL`, otherwise the method name is
      * extracted from the provided task string.
      *
-     * Prepended to the method name is the provided view name separated by '.' (as
-     * per Joomla! standards).
+     * Prepended to the method name is the provided view name separated by '.'
+     * (as per Joomla! standards).
      *
      * If a valid method name cannot be located, `NULL` is returned.
      *
-     * @param        string    $view        The name of the requested view.
-     * @param     ?string    $method    The name of the requested method.
-     * @param     ?string    $task        The default menu item task.
+     * @param   string   $view    The name of the requested view.
+     * @param   ?string  $method  The name of the requested method.
+     * @param   ?string  $task    The default menu item task.
      *
-     * @return    ?string                     A Joomla!-standard task string.
+     * @return  ?string           A Joomla!-standard task string.
      */
     protected function parseGetTask(string $view, ?string $method, ?string $task) : ?string
     {
