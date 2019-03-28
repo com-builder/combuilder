@@ -95,6 +95,11 @@ export default class Create extends Command {
       description: 'populate author and email metadata with name and email from git configuration',
       required: false
     }),
+
+    template: flags.string({
+      char: 't',
+      description: 'specifies which skeleton template to use when creating component'
+    })
   };
 
   /**
