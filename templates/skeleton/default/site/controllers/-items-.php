@@ -3,9 +3,9 @@
  * This controller is responsible for coordinating the "{{Item}}s" data and
  * presentation layers.
  *
- * @author     {{author}} <{{email}}>
- * @copyright  2018 {{author}}. All rights reserved.
- * @license    GNU General Public License v3 (GPL-3.0).
+ * @author         {{author}} <{{email}}>
+ * @copyright    2018 {{author}}. All rights reserved.
+ * @license        GNU General Public License v3 (GPL-3.0).
  */
 
 // namespace Joomla\Component\{{Name}}\Site\Controller;

@@ -2,9 +2,9 @@
 /**
  * This file serves as the component's logical entrypoint for execution.
  *
- * @author     {{author}} <{{email}}>
- * @copyright  2018 {{author}}. All rights reserved.
- * @license    GNU General Public License v3 (GPL-3.0).
+ * @author         {{author}} <{{email}}>
+ * @copyright    2018 {{author}}. All rights reserved.
+ * @license        GNU General Public License v3 (GPL-3.0).
  */
 
 use Joomla\CMS\Factory;
@@ -18,17 +18,17 @@ use Joomla\CMS\MVC\Controller\BaseController;
  * and cause no other side effects, or it SHOULD execute logic with side
  * effects, but SHOULD NOT do both."
  *
- * @throws  \Exception  When the application fails to start.
- * @throws  \Exception  If the controller couldn't be loaded.
- * @throws  \Exception  If the task couldn't be found.
+ * @throws    \Exception    When the application fails to start.
+ * @throws    \Exception    If the controller couldn't be loaded.
+ * @throws    \Exception    If the task couldn't be found.
  */
 (function() {
-  // Fetch the client's desired class task from its request input
-  $input = Factory::getApplication()->input;
-  // Fetch an instance of the appropriate `BaseController` child class
-  $controller = BaseController::getInstance('{{Name}}');
-  // Execute the task using the controller instance
-  $controller->execute($input->get('task'));
-  // Perform any pending redirect set by the controller
-  $controller->redirect();
+    // Fetch the client's desired class task from its request input
+    $input = Factory::getApplication()->input;
+    // Fetch an instance of the appropriate `BaseController` child class
+    $controller = BaseController::getInstance('{{Name}}');
+    // Execute the task using the controller instance
+    $controller->execute($input->get('task'));
+    // Perform any pending redirect set by the controller
+    $controller->redirect();
 })();
