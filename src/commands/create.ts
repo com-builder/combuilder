@@ -199,13 +199,18 @@ export default class Create extends Command {
   }
 
   async run() {
-    const {args} = this.parse(Create);
+    const {args, flags} = this.parse(Create);
     // Create component with com_ prefix
     const comName = `com_${args.name}`;
     // Create component directory
     fs.mkdirSync(comName);
+
+    let template = 'default';
+    if (flags.template) {
+      template = flags.template;
+    }
     // Resolve path to this packages skeleton template directory
-    const skeleton = path.resolve(__dirname, '../../templates/skeleton/default');
+    const skeleton = path.resolve(__dirname, `../../templates/skeleton/${template}`);
     // Copy over template to new directory
     extra.copySync(skeleton, comName);
     // Rename placeholder files in newly created component source

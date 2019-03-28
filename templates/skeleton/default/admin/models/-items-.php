@@ -84,8 +84,8 @@ class {{Name}}Model{{Item}}s extends ListModel {
         $query = $db->getQuery(TRUE);
         // Prepare the query to select list-worthy columns from the "{{Item}}s"
         // table
-        $query->select($db->quoteName(['{{item}}s.id', '{{item}}s.published', '
-            {{item}}s.name']));
+        $query->select($db->quoteName(['{{item}}s.id', '{{item}}s.published',
+            '{{item}}s.name']));
         // Fetch the checked out user ID and timestamp
         $query->select($db->quoteName('{{item}}s.checked_out', 'checkedOut'));
         $query->select($db->quoteName('{{item}}s.checked_out_time',
