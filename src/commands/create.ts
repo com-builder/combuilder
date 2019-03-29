@@ -95,6 +95,11 @@ export default class Create extends Command {
       description: 'populate author and email metadata with name and email from git configuration',
       required: false
     }),
+
+    template: flags.string({
+      char: 't',
+      description: 'specifies which skeleton template to use when creating component'
+    })
   };
 
   /**
@@ -116,13 +121,26 @@ export default class Create extends Command {
   ];
 
   async run() {
-    const {args} = this.parse(Create);
+    const {args, flags} = this.parse(Create);
+    // Use default skeleton template if -t is not specified. This conforms to
+    // Joomla's code styling guide
+    let template = 'default';
+    // Check if user provided a specified template
+    if (flags.template) {
+      template = flags.template;
+    }
+    // Resolve path to this packages skeleton template directory specified
+    const skeleton = path.resolve(__dirname, `../../templates/skeleton/${template}`);
+    // Check if skeleton template exists before proceeding
+    if (!fs.existsSync(skeleton)) {
+      this.error(`Specified template, "${template}", does not exist`, {
+        exit: 2
+      });
+    }
     // Create component with com_ prefix
     const comName = `com_${args.name}`;
     // Create component directory
     fs.mkdirSync(comName);
-    // Resolve path to this packages skeleton template directory
-    const skeleton = path.resolve(__dirname, '../../templates/skeleton');
     // Copy over template to new directory
     extra.copySync(skeleton, comName);
     // Rename placeholder files in newly created component source
