@@ -6,6 +6,7 @@ A CLI utility for generating Joomla components
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/@combuilder/combuilder.svg)](https://npmjs.org/package/@combuilder/combuilder)
 [![License](https://img.shields.io/npm/l/@combuilder/combuilder.svg)](https://github.com/com-builder/combuilder/blob/master/package.json)
+[![Build Status](https://travis-ci.com/com-builder/combuilder.svg?branch=master)](https://travis-ci.com/com-builder/combuilder)
 
 Basic Usage
 ==================
