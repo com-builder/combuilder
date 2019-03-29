@@ -33,7 +33,7 @@ function clean(path: string): void {
 }
 
 describe('create', () => {
-  test.stdout().command(['create', comName, 'bar']).it('runs create', (ctx) => {
+  test.stdout().command(['create', comName, 'bar']).it('successfully runs create command', (ctx) => {
     expect(ctx.stdout).to.contain(`com_${comName}`);
   });
 
