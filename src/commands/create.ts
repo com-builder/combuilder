@@ -204,12 +204,14 @@ export default class Create extends Command {
     const comName = `com_${args.name}`;
     // Create component directory
     fs.mkdirSync(comName);
-
+    // Use default skeleton template if -t is not specified. This conforms to
+    // Joomla's code styling guide
     let template = 'default';
+    // Check if user provided a specified template
     if (flags.template) {
       template = flags.template;
     }
-    // Resolve path to this packages skeleton template directory
+    // Resolve path to this packages skeleton template directory specified
     const skeleton = path.resolve(__dirname, `../../templates/skeleton/${template}`);
     // Copy over template to new directory
     extra.copySync(skeleton, comName);
