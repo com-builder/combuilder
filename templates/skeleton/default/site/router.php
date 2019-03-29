@@ -106,7 +106,7 @@ class {{Name}}Router extends RouterBase
      * @return  ?MenuItem           The best-fit menu item for the provided
      *                              parameters to be used for route building.
      */
-    protected function buildGetMenuItem(?int $ancestor, string $view,
+    protected function buildGetMenuItem(?int $ancestor, ?string $view,
         ?int $id): ?MenuItem
     {
         // Fetch either an array of menu items or a single menu item
