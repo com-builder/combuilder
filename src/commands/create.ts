@@ -211,7 +211,7 @@ export default class Create extends Command {
     const skeleton = path.resolve(__dirname, `../../templates/skeleton/${template}`);
     // Check if skeleton template exists before proceeding
     if (!fs.existsSync(skeleton)) {
-      this.error(`Specified template, ${template}, does not exist`, {
+      this.error(`Specified template, "${template}", does not exist`, {
         exit: 2
       });
     }
