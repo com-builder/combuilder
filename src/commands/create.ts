@@ -200,10 +200,6 @@ export default class Create extends Command {
 
   async run() {
     const {args, flags} = this.parse(Create);
-    // Create component with com_ prefix
-    const comName = `com_${args.name}`;
-    // Create component directory
-    fs.mkdirSync(comName);
     // Use default skeleton template if -t is not specified. This conforms to
     // Joomla's code styling guide
     let template = 'default';
@@ -219,6 +215,10 @@ export default class Create extends Command {
         exit: 2
       });
     }
+    // Create component with com_ prefix
+    const comName = `com_${args.name}`;
+    // Create component directory
+    fs.mkdirSync(comName);
     // Copy over template to new directory
     extra.copySync(skeleton, comName);
     // Rename placeholder files in newly created component source
