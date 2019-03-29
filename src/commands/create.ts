@@ -213,6 +213,12 @@ export default class Create extends Command {
     }
     // Resolve path to this packages skeleton template directory specified
     const skeleton = path.resolve(__dirname, `../../templates/skeleton/${template}`);
+    // Check if skeleton template exists before proceeding
+    if (!fs.existsSync(skeleton)) {
+      this.error(`Specified template, ${template}, does not exist`, {
+        exit: 2
+      });
+    }
     // Copy over template to new directory
     extra.copySync(skeleton, comName);
     // Rename placeholder files in newly created component source
