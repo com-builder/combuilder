@@ -120,6 +120,38 @@ export default class Create extends Command {
     }
   ];
 
+  async run() {
+    const {args, flags} = this.parse(Create);
+    // Use default skeleton template if -t is not specified. This conforms to
+    // Joomla's code styling guide
+    let template = 'default';
+    // Check if user provided a specified template
+    if (flags.template) {
+      template = flags.template;
+    }
+    // Resolve path to this packages skeleton template directory specified
+    const skeleton = path.resolve(__dirname, `../../templates/skeleton/${template}`);
+    // Check if skeleton template exists before proceeding
+    if (!fs.existsSync(skeleton)) {
+      this.error(`Specified template, "${template}", does not exist`, {
+        exit: 2
+      });
+    }
+    // Create component with com_ prefix
+    const comName = `com_${args.name}`;
+    // Create component directory
+    fs.mkdirSync(comName);
+    // Copy over template to new directory
+    extra.copySync(skeleton, comName);
+    // Rename placeholder files in newly created component source
+    this.renameFiles(comName, args.name, args.view);
+    // Replace data if information provided via arguments
+    // (@see this.createReplacementData())
+    this.replaceData(comName);
+
+    this.log(`${comName} successfully created`);
+  }
+
   /**
    * Create object replacement data based on CLI arguments
    *
@@ -191,43 +223,11 @@ export default class Create extends Command {
    *                         settings
    */
   protected getGitSettings(): GitSettings {
-    const settings = <GitSync>gitConfig.sync();
+    const settings = gitConfig.sync() as GitSync;
     return {
       name: settings.user.name,
       email: settings.user.email,
-    }
-  }
-
-  async run() {
-    const {args, flags} = this.parse(Create);
-    // Use default skeleton template if -t is not specified. This conforms to
-    // Joomla's code styling guide
-    let template = 'default';
-    // Check if user provided a specified template
-    if (flags.template) {
-      template = flags.template;
-    }
-    // Resolve path to this packages skeleton template directory specified
-    const skeleton = path.resolve(__dirname, `../../templates/skeleton/${template}`);
-    // Check if skeleton template exists before proceeding
-    if (!fs.existsSync(skeleton)) {
-      this.error(`Specified template, "${template}", does not exist`, {
-        exit: 2
-      });
-    }
-    // Create component with com_ prefix
-    const comName = `com_${args.name}`;
-    // Create component directory
-    fs.mkdirSync(comName);
-    // Copy over template to new directory
-    extra.copySync(skeleton, comName);
-    // Rename placeholder files in newly created component source
-    this.renameFiles(comName, args.name, args.view);
-    // Replace data if information provided via arguments
-    // (@see this.createReplacementData())
-    this.replaceData(comName);
-
-    this.log(`${comName} successfully created`);
+    };
   }
 
   /**
@@ -288,29 +288,33 @@ export default class Create extends Command {
     let replacements = this.createReplacementData();
 
     for (let item of items) {
-      // Build path to current item, if this is a directory it will be passed
-      // to next recursive call
-      let nextPath = `${path}/${item}`;
-      // Check if item is a file to determine file level find and replace is
-      // warranted
-      if (fs.lstatSync(nextPath).isFile()) {
-        let file = fs.readFileSync(nextPath, 'utf8');
-        // Loop over replacement data in order to start find and replace
-        for (let replacement in replacements) {
-          // Build expression for finding values that need replaced globally in
-          // file
-          const expr = new RegExp(`(\{\{${replacement}\}\})`, 'g');
-          if (expr.test(file)) {
-            // Replace every instance of found replacement
-            file = file.replace(expr, replacements[replacement]);
+      if (items.includes(item)) {
+        // Build path to current item, if this is a directory it will be passed
+        // to next recursive call
+        let nextPath = `${path}/${item}`;
+        // Check if item is a file to determine file level find and replace is
+        // warranted
+        if (fs.lstatSync(nextPath).isFile()) {
+          let file = fs.readFileSync(nextPath, 'utf8');
+          // Loop over replacement data in order to start find and replace
+          for (let replacement in replacements) {
+            if (replacements.hasOwnProperty(replacement)) {
+              // Build expression for finding values that need replaced
+              // globally in file
+              const expr = new RegExp(`(\{\{${replacement}\}\})`, 'g');
+              if (expr.test(file)) {
+                // Replace every instance of found replacement
+                file = file.replace(expr, replacements[replacement]);
+              }
+            }
           }
+          // Rewrite newly modified with replacement data
+          fs.writeFileSync(nextPath, file);
         }
-        // Rewrite newly modified with replacement data
-        fs.writeFileSync(nextPath, file);
-      }
-      // Check if item is a directory in order to start recursive actions
-      if (fs.lstatSync(nextPath).isDirectory()) {
-        this.replaceData(nextPath);
+        // Check if item is a directory in order to start recursive actions
+        if (fs.lstatSync(nextPath).isDirectory()) {
+          this.replaceData(nextPath);
+        }
       }
     }
   }
