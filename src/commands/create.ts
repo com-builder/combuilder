@@ -208,7 +208,7 @@ export default class Create extends Command {
       copyright = flags.copyright;
     } else {
       //Use current date and year in copyright by default
-      copyright = date.getFullYear() + author + '. All Rights Reserved.';
+      copyright = date.getFullYear() + ' ' + author + '. All Rights Reserved.';
     }
 
     // Conveniently capitalize strings
