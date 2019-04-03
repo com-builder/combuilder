@@ -24,8 +24,8 @@ $ combuilder --help [COMMAND]
 
 Commands
 =================
-* [`combuilder create [NAME] [VIEW]`](#joomlaly-create-name-view)
-* [`combuilder help [COMMAND]`](#joomlaly-help-command)
+* [`combuilder create [NAME] [VIEW]`](#combuilder-create-name-view)
+* [`combuilder help [COMMAND]`](#combuilder-help-command)
 
 There is currently only a create command, for generating a basic
 Joomla component. More will be added in the future.
@@ -37,6 +37,9 @@ list and item view based on the view name provided. Most options are used to
 manipulate component metadata, such as component author, email, URL, etc. The
 `-g` option pulls author name and email from your global git configuration. If
 any of these options aren't provided they are simply left blank.
+
+The `-t` option is used to specify a template to use. If no template option is
+provided, the default template is used.
 
 ```
 creates a Joomla component based on options provided
@@ -55,6 +58,7 @@ OPTIONS
   -g, --useGit                 pull meta information from git configuration
   -h, --help                   show CLI help
   -u, --url=url                url for component metadata
+  -t, --template=default       the template to use, default is used if none specified
 
 EXAMPLE
   $ combuilder create NAME VIEW
