@@ -4,7 +4,7 @@
  * "{{Item}}" view and is used exclusively by the `View{{Item}}` class.
  *
  * @author         {{author}} <{{email}}>
- * @copyright    2018 {{author}}. All rights reserved.
+ * @copyright    {{copyright}}
  * @license        GNU General Public License v3 (GPL-3.0).
  */
 

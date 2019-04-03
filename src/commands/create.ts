@@ -32,6 +32,7 @@ interface GitSync {
 interface Replacement {
   [key: string]: string;
   author: string;
+  copyright: string;
   createDate: string;
   email: string;
   item: string;
@@ -98,7 +99,14 @@ export default class Create extends Command {
 
     template: flags.string({
       char: 't',
-      description: 'specifies which skeleton template to use when creating component'
+      description: 'specifies which skeleton template to use when creating component',
+      required: false
+    }),
+
+    copyright: flags.string({
+      char: 'c',
+      description: 'specify the copyright to add to the code.',
+      required: false
     })
   };
 
@@ -166,15 +174,23 @@ export default class Create extends Command {
       author = flags.author;
     }
 
+    // Use current date if none provided by user
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'];
+    const date = new Date();
     let createDate = '';
     if (flags.createDate) {
       createDate = flags.createDate;
     } else {
-      // Use current date if none provided by user
-      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'];
-      const date = new Date();
       createDate = `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
+    }
+
+    let copyright = '';
+    if (flags.copyright) {
+      copyright = flags.copyright;
+    } else {
+      //Use current date and year in copyright by default
+      copyright = date.getFullYear() + author + '. All Rights Reserved.';
     }
 
     let email = '';
@@ -212,7 +228,7 @@ export default class Create extends Command {
     let items = `${item}s`;
     let Items = `${Item}s`;
     let ITEMS = `${ITEM}S`;
-    return {author, createDate, email, item, Item, ITEM, items, Items, ITEMS,
+    return {author, copyright, createDate, email, item, Item, ITEM, items, Items, ITEMS,
       name, Name, NAME, url};
   }
 
