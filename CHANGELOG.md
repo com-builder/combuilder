@@ -1,3 +1,7 @@
+## 0.1.1 - April 2, 2019
+- Update README with information on the new template parameter
+- Fix link in README for example commands
+
 ## 0.1.0 - March 25, 2019
 - add `-t` option for specifying which skeleton template to use
 - create default template conforming to [Joomla's coding style guide](https://developer.joomla.org/coding-standards/basic-guidelines.html)
