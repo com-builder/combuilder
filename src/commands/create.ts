@@ -185,14 +185,6 @@ export default class Create extends Command {
       createDate = `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
     }
 
-    let copyright = '';
-    if (flags.copyright) {
-      copyright = flags.copyright;
-    } else {
-      //Use current date and year in copyright by default
-      copyright = date.getFullYear() + author + '. All Rights Reserved.';
-    }
-
     let email = '';
     if (flags.email) {
       email = flags.email;
@@ -209,6 +201,14 @@ export default class Create extends Command {
       const gitSettings = this.getGitSettings();
       author = gitSettings.name;
       email = gitSettings.email;
+    }
+
+    let copyright = '';
+    if (flags.copyright) {
+      copyright = flags.copyright;
+    } else {
+      //Use current date and year in copyright by default
+      copyright = date.getFullYear() + author + '. All Rights Reserved.';
     }
 
     // Conveniently capitalize strings
