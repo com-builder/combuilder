@@ -3,7 +3,7 @@
  * This file serves as the component's router for Joomla's SEF URLs.
  *
  * @author     {{author}} <{{email}}>
- * @copyright  2018 {{author}}. All rights reserved.
+ * @copyright  {{copyright}}
  * @license    GNU General Public License v3 (GPL-3.0).
  */
 

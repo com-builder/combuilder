@@ -2,7 +2,7 @@
 -- This file defines the schema required to store "{{Item}}" records in a database.
 --
 -- @author     {{author}} <{{email}}>
--- @copyright  2018 {{author}}. All rights reserved.
+-- @copyright  {{copyright}}
 -- @license    GNU General Public License v3 (GPL-3.0).
 ---
 CREATE TABLE IF NOT EXISTS `#__{{name}}_{{item}}s` (
