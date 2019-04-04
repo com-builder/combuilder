@@ -3,7 +3,7 @@
  ! This file defines a menu item type to view a single "{{Item}}".
  !
  ! @author     {{author}} <{{email}}>
- ! @copyright  2018 {{author}}. All rights reserved.
+ ! @copyright  {{copyright}}
  ! @license    GNU General Public License v3 (GPL-3.0).
  !-->
 <metadata>

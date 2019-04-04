@@ -53,6 +53,7 @@ ARGUMENTS
 
 OPTIONS
   -a, --author=author          author name for component metadata
+  -c, --copyright              the copyright to use in the docblock and xml, defaults to current year and author if not specified
   -d, --createDate=createDate  created date for component metadata, current date is used if this option isn't present
   -e, --email=email            email address for component metadata
   -g, --useGit                 pull meta information from git configuration

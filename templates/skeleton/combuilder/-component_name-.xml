@@ -7,7 +7,7 @@
   <authorEmail>{{email}}</authorEmail>
   <authorUrl>{{url}}</authorUrl>
   <creationDate>{{createDate}}</creationDate>
-  <copyright>2018 {{author}}. All rights reserved.</copyright>
+  <copyright>{{copyright}}</copyright>
   <license>GNU General Public License v3 (GPL-3.0).</license>
   <install>
     <sql>
