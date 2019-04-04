@@ -1,3 +1,6 @@
+## 0.2.0 - April 4, 2019
+- Add option specify the copyright, or default to a base value if unspecified
+
 ## 0.1.1 - April 2, 2019
 - Update README with information on the new template parameter
 - Fix link in README for example commands
