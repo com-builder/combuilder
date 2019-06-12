@@ -1,3 +1,6 @@
+## 0.2.1 - June 11, 2019
+- Update Node Packages
+
 ## 0.2.0 - April 4, 2019
 - Add option specify the copyright, or default to a base value if unspecified
 
