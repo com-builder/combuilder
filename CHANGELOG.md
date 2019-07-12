@@ -1,3 +1,6 @@
+## 0.2.2 - July 12, 2019
+- Update Node Packages
+
 ## 0.2.1 - June 11, 2019
 - Update Node Packages
 
