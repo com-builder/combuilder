@@ -1,7 +1,7 @@
 {
   "name": "@combuilder/combuilder",
   "description": "A CLI utility for generating Joomla components",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Jeremy Jackson @jeremyvii",
   "bin": {
     "combuilder": "./bin/run"
