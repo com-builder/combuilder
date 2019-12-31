@@ -1,3 +1,6 @@
+## 0.2.3 - December 30, 2019
+- Update Handelbars Package
+
 ## 0.2.2 - July 12, 2019
 - Update Node Packages
 
